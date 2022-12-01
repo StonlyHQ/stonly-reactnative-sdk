@@ -5,8 +5,8 @@
   "main": "lib/commonjs/stonly",
   "module": "lib/module/stonly",
   "types": "lib/typescript/stonly.d.ts",
-  "react-native": "src/index",
-  "source": "src/index",
+  "react-native": "src/stonly",
+  "source": "src/stonly",
   "files": [
     "src",
     "lib",
