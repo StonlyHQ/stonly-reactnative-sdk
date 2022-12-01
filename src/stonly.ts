@@ -6,41 +6,40 @@ const eventEmitter = new NativeEventEmitter(StonlyWidget);
 const linkingEventEmitter = new NativeEventEmitter(LinkingManager);
 
 const Stonly = {
-  addListener: function (eventName, listener) {
+  addListener: function (eventName: string, listener: any) {
     eventEmitter.addListener(eventName, listener);
   },
 
-  removeAllListeners: function (eventName) {
+  removeAllListeners: function (eventName: string) {
     eventEmitter.removeAllListeners(eventName);
   },
 
-  setWidgetId: function (widgetId) {
+  setWidgetId: function (widgetId: string) {
     StonlyWidget.setWidgetId(widgetId);
   },
 
-  setDebugEnabled: function (debugEnabled) {
+  setDebugEnabled: function (debugEnabled: boolean) {
     StonlyWidget.setDebugEnabled(debugEnabled);
   },
 
-  setWizardEnabled: function (wizardEnabled) {
+  setWizardEnabled: function (wizardEnabled: boolean) {
     linkingEventEmitter.removeAllListeners('url');
     if (wizardEnabled) {
-      linkingEventEmitter.addListener('url', event => {
-        console.log(event);
+      linkingEventEmitter.addListener('url', (event: any) => {
         StonlyWidget.handleURL(event.url);
       });
     }
   },
 
-  setMonitoringEnabled: function (monitoringEnabled) {
+  setMonitoringEnabled: function (monitoringEnabled: boolean) {
     StonlyWidget.setMonitoringEnabled(monitoringEnabled);
   },
 
-  setSegmentAnonymousId: function (segmentAnonymousId) {
+  setSegmentAnonymousId: function (segmentAnonymousId: string) {
     StonlyWidget.setSegmentAnonymousId(segmentAnonymousId);
   },
 
-  sendData: function (dataObject) {
+  sendData: function (dataObject: object) {
     StonlyWidget.sendData(dataObject);
   },
 
@@ -48,35 +47,35 @@ const Stonly = {
     StonlyWidget.clearSentData();
   },
 
-  setWidgetLanguage: function (languageCode) {
+  setWidgetLanguage: function (languageCode: string) {
     StonlyWidget.setWidgetLanguage(languageCode);
   },
 
-  setWindowLevel: function (windowLevel) {
+  setWindowLevel: function (windowLevel: number) {
     StonlyWidget.setWindowLevel(windowLevel);
   },
 
-  openGuide: function (guideId, stepId = null, widgetOptions = {}) {
+  openGuide: function (guideId: string, stepId = null, widgetOptions = {}) {
     StonlyWidget.openGuide(guideId, stepId, widgetOptions);
   },
 
-  openGuidedTour: function (guideId, stepId = null) {
+  openGuidedTour: function (guideId: string, stepId = null) {
     StonlyWidget.openGuidedTour(guideId, stepId);
   },
 
-  openKnowledgeBase: function (teamKnowledgeBaseId, folderId = null) {
+  openKnowledgeBase: function (teamKnowledgeBaseId: string, folderId = null) {
     StonlyWidget.openKnowledgeBase(teamKnowledgeBaseId, folderId);
   },
 
-  closeWidget: function (widgetRuleId) {
+  closeWidget: function (widgetRuleId: string) {
     StonlyWidget.closeWidget(widgetRuleId);
   },
 
-  identify: function (customerId, properties = {}) {
+  identify: function (customerId: string, properties = {}) {
     StonlyWidget.identify(customerId, properties);
   },
 
-  track: function (eventName) {
+  track: function (eventName: string) {
     StonlyWidget.track(eventName);
   },
 };
