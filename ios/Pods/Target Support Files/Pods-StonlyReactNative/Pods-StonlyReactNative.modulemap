@@ -1,0 +1,6 @@
+framework module Pods_StonlyReactNative {
+  umbrella header "Pods-StonlyReactNative-umbrella.h"
+
+  export *
+  module * { export * }
+}

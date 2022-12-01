@@ -1,0 +1,16 @@
+PODS:
+  - Stonly (0.1.1)
+
+DEPENDENCIES:
+  - Stonly (from `/Users/remybaroukh/dev/stonly/stonly-ios-sdk`)
+
+EXTERNAL SOURCES:
+  Stonly:
+    :path: "/Users/remybaroukh/dev/stonly/stonly-ios-sdk"
+
+SPEC CHECKSUMS:
+  Stonly: 6182ae2d0bce055e2c6f188e67e0765ba83e63d7
+
+PODFILE CHECKSUM: fb5b757389e84438a330c643fe01ebb44b3bc983
+
+COCOAPODS: 1.11.3
