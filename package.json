@@ -156,8 +156,5 @@
         }
       ]
     ]
-  },
-  "dependencies": {
-    "rn-pendo-sdk": "^2.19.0"
   }
 }
