@@ -21,6 +21,11 @@ class StonlyReactNativeModule(reactContext: ReactApplicationContext) :
     promise.resolve(a * b)
   }
 
+  @ReactMethod
+  fun setup(navigation: Any) {
+    Log.d("StonlyMonitoring", "Yoooo setup!")
+  }
+
   companion object {
     const val NAME = "StonlyReactNative"
 
