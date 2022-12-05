@@ -16,13 +16,7 @@ class StonlyReactNativeModule(reactContext: ReactApplicationContext) :
   }
 
   @ReactMethod
-  fun setup(navigation: Any) {
-    Log.d("StonlyMonitoring", "Yoooo setup!")
-  }
-
-  @ReactMethod
   fun onScreenChanged(screenName: String, index: Int) {
-    Log.d("StonlyMonitoring", "Yoooo onScreenChanged!")
     Stonly.onScreenChanged(screenName, index)
   }
 
