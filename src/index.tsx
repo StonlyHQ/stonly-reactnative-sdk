@@ -46,6 +46,9 @@ export function setNavigation(navigationRef: any) {
     });
     console.log('stonly event routeName: ', routeName);
     console.log('stonly event index: ', index);
+    if (index == null) {
+      index = -1;
+    }
     StonlyReactNative.onScreenChanged(routeName, index);
   });
 }
