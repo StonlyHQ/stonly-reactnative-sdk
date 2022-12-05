@@ -18,19 +18,19 @@ const StonlyReactNative = NativeModules.StonlyReactNative
     );
 
 export function multiply(a: number, b: number): Promise<number> {
-  console.log("Hello");
+  console.log('Hello');
   return StonlyReactNative.multiply(a, b);
 }
 
-export function setup(navigation) {
-  navigation.events().registerComponentDidAppearListener((event) => {
+export function setup(navigation: any) {
+  navigation.events().registerComponentDidAppearListener((event : any) => {
     console.log('stonly event', event); //  componentName: 'Home',componentId: 'Component1',
     StonlyReactNative.onScreenChanged(event.componentName, -1);
   });
 }
 
-export function setNavigation(navigationRef) {
-  navigationRef.addListener('state', (e) => {
+export function setNavigation(navigationRef: any) {
+  navigationRef.addListener('state', (e : any) => {
     let routeName = '';
     let index = null;
     e.data.state?.routes?.forEach((element) => {
