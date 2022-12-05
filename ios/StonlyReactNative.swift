@@ -10,9 +10,9 @@ class StonlyReactNative: NSObject {
     print(Stonly.Widget.widgetId)
   }
 
-  @objc(onScreenChanged:withB:withResolver:withRejecter:)
-  func onScreenChanged(a: String, b: String, resolve:RCTPromiseResolveBlock,reject:RCTPromiseRejectBlock) -> Void {
-    print("Yooo")
+  @objc(onScreenChanged:tabIndex:)
+  func onScreenChanged(screenName: String, tabIndex: Int) -> Void {
+    print("onScreenChanged")
     print(Stonly.Widget.widgetId)
   }
 }

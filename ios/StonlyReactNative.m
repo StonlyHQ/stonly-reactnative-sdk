@@ -11,9 +11,7 @@ RCT_EXTERN_METHOD(multiply:(float)a withB:(float)b
   return NO;
 }
 
-RCT_EXTERN_METHOD(onScreenChanged:(NSString *)a withB:(NSString *)b
-                 withResolver:(RCTPromiseResolveBlock)resolve
-                 withRejecter:(RCTPromiseRejectBlock)reject)
+RCT_EXTERN_METHOD(onScreenChanged:(NSString *)screenName tabIndex:(int)tabIndex)
 
 + (BOOL)requiresMainQueueSetup
 {
