@@ -33,7 +33,7 @@ export function setNavigation(navigationRef: any) {
   navigationRef.addListener('state', (e : any) => {
     let routeName = '';
     let index = null;
-    e.data.state?.routes?.forEach((element) => {
+    e.data.state?.routes?.forEach((element : any) => {
       index = element.state?.index;
       if (typeof element === 'string') {
         routeName += '/' + element;
