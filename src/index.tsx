@@ -18,5 +18,34 @@ const StonlyReactNative = NativeModules.StonlyReactNative
     );
 
 export function multiply(a: number, b: number): Promise<number> {
+  console.log("Hello");
   return StonlyReactNative.multiply(a, b);
+}
+
+export function setup(navigation) {
+  navigation.events().registerComponentDidAppearListener((event) => {
+    console.log('stonly event', event); //  componentName: 'Home',componentId: 'Component1',
+    StonlyReactNative.onScreenChanged(event.componentName, -1);
+  });
+}
+
+export function setNavigation(navigationRef) {
+  navigationRef.addListener('state', (e) => {
+    let routeName = '';
+    let index = null;
+    e.data.state?.routes?.forEach((element) => {
+      index = element.state?.index;
+      if (typeof element === 'string') {
+        routeName += '/' + element;
+      }
+      // type = element.data.state?.type
+      if (element.state && element.state?.routeNames && index) {
+        routeName = '/' + element.state?.routeNames[index];
+      }
+      console.log('stonly event index: ', index);
+    });
+    console.log('stonly event routeName: ', routeName);
+    console.log('stonly event index: ', index);
+    StonlyReactNative.onScreenChanged(routeName, index);
+  });
 }
