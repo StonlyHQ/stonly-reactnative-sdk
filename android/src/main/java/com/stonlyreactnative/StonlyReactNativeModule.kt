@@ -16,14 +16,14 @@ class StonlyReactNativeModule(reactContext: ReactApplicationContext) :
   }
 
   @ReactMethod
-  fun multiply(a: Double, b: Double, promise: Promise) {
-    Log.d("StonlyMonitoring", "Yoooo2!")
-    promise.resolve(a * b)
+  fun setup(navigation: Any) {
+    Log.d("StonlyMonitoring", "Yoooo setup!")
   }
 
   @ReactMethod
-  fun setup(navigation: Any) {
-    Log.d("StonlyMonitoring", "Yoooo setup!")
+  fun onScreenChanged(screenName: String, index: Int) {
+    Log.d("StonlyMonitoring", "Yoooo onScreenChanged!")
+    Stonly.onScreenChanged(screenName, index)
   }
 
   companion object {
