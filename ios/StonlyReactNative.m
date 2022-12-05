@@ -13,9 +13,4 @@ RCT_EXTERN_METHOD(multiply:(float)a withB:(float)b
 
 RCT_EXTERN_METHOD(onScreenChanged:(NSString *)screenName tabIndex:(int)tabIndex)
 
-+ (BOOL)requiresMainQueueSetup
-{
-  return NO;
-}
-
 @end
