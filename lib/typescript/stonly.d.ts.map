@@ -1,1 +1,1 @@
-{"version":3,"file":"stonly.d.ts","sourceRoot":"","sources":["../../src/stonly.ts"],"names":[],"mappings":"AAOA,QAAA,MAAM,MAAM;6BACwB,MAAM,YAAY,GAAG;oCAId,MAAM;4BAId,MAAM;oCAIE,OAAO;sCAIL,OAAO;8CASC,OAAO;gDAIL,MAAM;2BAI3B,MAAM;;sCAQK,MAAM;kCAIV,MAAM;yBAIf,MAAM;8BAID,MAAM;6CAIS,MAAM;gCAInB,MAAM;2BAIX,MAAM;uBAIV,MAAM;CAGnC,CAAC;AAEF,eAAe,MAAM,CAAC"}
+{"version":3,"file":"stonly.d.ts","sourceRoot":"","sources":["../../src/stonly.ts"],"names":[],"mappings":""}
