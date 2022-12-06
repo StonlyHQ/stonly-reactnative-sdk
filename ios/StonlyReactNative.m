@@ -1,10 +1,6 @@
 #import <React/RCTBridgeModule.h>
-
+@import Stonly;
 @interface RCT_EXTERN_MODULE(StonlyReactNative, NSObject)
-
-RCT_EXTERN_METHOD(multiply:(float)a withB:(float)b
-                 withResolver:(RCTPromiseResolveBlock)resolve
-                 withRejecter:(RCTPromiseRejectBlock)reject)
 
 + (BOOL)requiresMainQueueSetup
 {
@@ -12,5 +8,10 @@ RCT_EXTERN_METHOD(multiply:(float)a withB:(float)b
 }
 
 RCT_EXTERN_METHOD(onScreenChanged:(NSString *)screenName tabIndex:(int)tabIndex)
+
+RCT_EXPORT_METHOD(openGuidedTour:(NSString*)guideId stepId:(NSString*)stepId)
+{
+  [StonlyWidget openGuidedTour:guideId stepId:stepId window:nil];
+}
 
 @end
