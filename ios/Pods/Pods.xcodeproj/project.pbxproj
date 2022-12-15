@@ -11,7 +11,7 @@
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 1A385505051675941BCBB90C15F608AE /* Build configuration list for PBXAggregateTarget "Stonly" */;
 			buildPhases = (
-				1E3D78614C9ABA315566EB292CB08AB7 /* [CP] Copy XCFrameworks */,
+				F70740780FC1CC15A857B28BCA5901B1 /* [CP] Copy XCFrameworks */,
 			);
 			dependencies = (
 			);
@@ -26,7 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F5E9C26E247ED530EA606C393866088F /* PBXContainerItemProxy */ = {
+		9EA281EBAD8CF7986F233004C7AA0832 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -36,19 +36,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A30A578BD1199482C94FF8B0E484DBF /* Stonly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Stonly.debug.xcconfig; sourceTree = "<group>"; };
 		29470768D10F1FA59E7B8AFCAA324C1D /* Pods-StonlyReactNative-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-StonlyReactNative-dummy.m"; sourceTree = "<group>"; };
 		2EF930AE392CB7621E3B9CD435987414 /* Pods-StonlyReactNative.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-StonlyReactNative.debug.xcconfig"; sourceTree = "<group>"; };
-		565984DD4627EB9A8C7E62DC07964B18 /* Stonly.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = Stonly.xcframework; sourceTree = "<group>"; };
+		539D340C1B8BAA860463B80D6E29BE09 /* Stonly-xcframeworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Stonly-xcframeworks.sh"; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		797B0982A89D183FE687F824D0EF6ACC /* Stonly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Stonly.debug.xcconfig; sourceTree = "<group>"; };
-		87FDD7795DCDFD2EA97B073582C42F90 /* Stonly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Stonly.release.xcconfig; sourceTree = "<group>"; };
+		885E63FBF7E7419959ECDA10F664C921 /* Stonly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Stonly.release.xcconfig; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A75BD45D93615C28D5B587C78D316196 /* Stonly.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; path = Stonly.xcframework; sourceTree = "<group>"; };
 		BE4B35E2F9E6E30C3AFC5DB0102BB518 /* Pods-StonlyReactNative.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-StonlyReactNative.release.xcconfig"; sourceTree = "<group>"; };
 		BF170892351DBC2C168FDC6592946E71 /* Pods-StonlyReactNative-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-StonlyReactNative-acknowledgements.markdown"; sourceTree = "<group>"; };
 		C271CE81826AD161A48C31E14A150B23 /* Pods-StonlyReactNative-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-StonlyReactNative-acknowledgements.plist"; sourceTree = "<group>"; };
-		D52BD78CBD4BB06B575CC8C30CC8F0A3 /* Stonly-xcframeworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Stonly-xcframeworks.sh"; sourceTree = "<group>"; };
 		D8BA1FB697C7BFBAEF90E5260823ED19 /* Pods-StonlyReactNative */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-StonlyReactNative"; path = Pods_StonlyReactNative.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2628DE9477F156E71416B13EB620083 /* Pods-StonlyReactNative-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-StonlyReactNative-Info.plist"; sourceTree = "<group>"; };
+		EB081116894F81A247461E7DE1CEBEC4 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		EC5FE0625CE0393370B32E55F8030036 /* Stonly.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = Stonly.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		F63734FCC4933386EA87B7A671026DAD /* Pods-StonlyReactNative-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-StonlyReactNative-umbrella.h"; sourceTree = "<group>"; };
 		FD99C31B4705578AEBF7CD4EC1B08B6F /* Pods-StonlyReactNative.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-StonlyReactNative.modulemap"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,10 +67,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		04BD4081C932063A2CF98DE21A6B10DD /* Frameworks */ = {
+		2DCD23789655C18497B7D25869EB065E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				565984DD4627EB9A8C7E62DC07964B18 /* Stonly.xcframework */,
+				A75BD45D93615C28D5B587C78D316196 /* Stonly.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -97,6 +99,28 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
+		5886960EF4EB254489A97B213DB03862 /* Stonly */ = {
+			isa = PBXGroup;
+			children = (
+				2DCD23789655C18497B7D25869EB065E /* Frameworks */,
+				E66ACE6400C8F8AF266029D12F26BD34 /* Pod */,
+				6C9C5AF09BD84EBDFAD0E5957C8CCB36 /* Support Files */,
+			);
+			name = Stonly;
+			path = /Users/remybaroukh/dev/stonly/iosSDK/cocoapods;
+			sourceTree = "<absolute>";
+		};
+		6C9C5AF09BD84EBDFAD0E5957C8CCB36 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				539D340C1B8BAA860463B80D6E29BE09 /* Stonly-xcframeworks.sh */,
+				0A30A578BD1199482C94FF8B0E484DBF /* Stonly.debug.xcconfig */,
+				885E63FBF7E7419959ECDA10F664C921 /* Stonly.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../../stonly-reactnative-sdk/ios/Pods/Target Support Files/Stonly";
+			sourceTree = "<group>";
+		};
 		6C9ED493489D702E31CCB5D2A0D64AFE /* Pods-StonlyReactNative */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,33 +137,12 @@
 			path = "Target Support Files/Pods-StonlyReactNative";
 			sourceTree = "<group>";
 		};
-		9A894400755C910B4D78E0201C02AFF7 /* Stonly */ = {
-			isa = PBXGroup;
-			children = (
-				04BD4081C932063A2CF98DE21A6B10DD /* Frameworks */,
-				C670A578889F25D65D744FECBA573CBB /* Support Files */,
-			);
-			name = Stonly;
-			path = Stonly;
-			sourceTree = "<group>";
-		};
-		C670A578889F25D65D744FECBA573CBB /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				D52BD78CBD4BB06B575CC8C30CC8F0A3 /* Stonly-xcframeworks.sh */,
-				797B0982A89D183FE687F824D0EF6ACC /* Stonly.debug.xcconfig */,
-				87FDD7795DCDFD2EA97B073582C42F90 /* Stonly.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/Stonly";
-			sourceTree = "<group>";
-		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				FBF76EF0254A38100928EBF54F6891EE /* Development Pods */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				D56A288EC579FC7C9B2D73F75547351C /* Pods */,
 				567D202631DF0E7FA0A01950BC744D74 /* Products */,
 				42740CFA91A48218AF72C051F63C0EB3 /* Targets Support Files */,
 			);
@@ -153,12 +156,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D56A288EC579FC7C9B2D73F75547351C /* Pods */ = {
+		E66ACE6400C8F8AF266029D12F26BD34 /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				9A894400755C910B4D78E0201C02AFF7 /* Stonly */,
+				EB081116894F81A247461E7DE1CEBEC4 /* LICENSE */,
+				EC5FE0625CE0393370B32E55F8030036 /* Stonly.podspec */,
 			);
-			name = Pods;
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		FBF76EF0254A38100928EBF54F6891EE /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5886960EF4EB254489A97B213DB03862 /* Stonly */,
+			);
+			name = "Development Pods";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,7 +199,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				23F9118884E89BE84D9A919C1750B90A /* PBXTargetDependency */,
+				A01D28967FA6A6B4F22B11BAEC7FECDF /* PBXTargetDependency */,
 			);
 			name = "Pods-StonlyReactNative";
 			productName = Pods_StonlyReactNative;
@@ -233,14 +245,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1E3D78614C9ABA315566EB292CB08AB7 /* [CP] Copy XCFrameworks */ = {
+		F70740780FC1CC15A857B28BCA5901B1 /* [CP] Copy XCFrameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Stonly/Stonly-xcframeworks.sh",
-				"${PODS_ROOT}/Stonly/Stonly.xcframework",
+				"${PODS_ROOT}/../../../iosSDK/cocoapods/Stonly.xcframework",
 			);
 			name = "[CP] Copy XCFrameworks";
 			outputPaths = (
@@ -265,11 +277,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		23F9118884E89BE84D9A919C1750B90A /* PBXTargetDependency */ = {
+		A01D28967FA6A6B4F22B11BAEC7FECDF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Stonly;
 			target = DAF32C7606267280C4C7C83DADB00546 /* Stonly */;
-			targetProxy = F5E9C26E247ED530EA606C393866088F /* PBXContainerItemProxy */;
+			targetProxy = 9EA281EBAD8CF7986F233004C7AA0832 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -345,7 +357,7 @@
 		};
 		6DA71DB215C2AB667842E104D149CE47 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 87FDD7795DCDFD2EA97B073582C42F90 /* Stonly.release.xcconfig */;
+			baseConfigurationReference = 885E63FBF7E7419959ECDA10F664C921 /* Stonly.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -361,7 +373,7 @@
 		};
 		8CBA57CC0C4BC9DE7F62C11B54CBE26F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 797B0982A89D183FE687F824D0EF6ACC /* Stonly.debug.xcconfig */;
+			baseConfigurationReference = 0A30A578BD1199482C94FF8B0E484DBF /* Stonly.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
