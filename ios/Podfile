@@ -6,6 +6,6 @@ target 'StonlyReactNative' do
   use_frameworks!
 
   # Pods for StonlyReactNative
-  pod 'Stonly'
+  pod 'Stonly', :path => '~/dev/stonly/iosSDK/cocoapods/'
 
 end
