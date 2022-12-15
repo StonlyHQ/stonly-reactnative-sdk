@@ -1,5 +1,5 @@
 PODS:
-  - Stonly (0.1.4)
+  - Stonly (0.1.5)
 
 DEPENDENCIES:
   - Stonly (from `~/dev/stonly/iosSDK/cocoapods/`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "~/dev/stonly/iosSDK/cocoapods/"
 
 SPEC CHECKSUMS:
-  Stonly: 44d15679880673e0fd44ce231d10f6826ccc3fef
+  Stonly: eab5284a525a1cce1d498bfb49e5c820066eb5b5
 
 PODFILE CHECKSUM: 8d5c68400bd606881fb1aef60b52762177042b30
 
