@@ -20,11 +20,11 @@ variant_for_slice()
   "Stonly.xcframework/ios-arm64_x86_64-simulator")
     echo "simulator"
     ;;
-  "Stonly.xcframework/ios-arm64")
-    echo ""
-    ;;
   "Stonly.xcframework/ios-arm64_x86_64-maccatalyst")
     echo "maccatalyst"
+    ;;
+  "Stonly.xcframework/ios-arm64")
+    echo ""
     ;;
   esac
 }
@@ -35,11 +35,11 @@ archs_for_slice()
   "Stonly.xcframework/ios-arm64_x86_64-simulator")
     echo "arm64 x86_64"
     ;;
-  "Stonly.xcframework/ios-arm64")
-    echo "arm64"
-    ;;
   "Stonly.xcframework/ios-arm64_x86_64-maccatalyst")
     echo "arm64 x86_64"
+    ;;
+  "Stonly.xcframework/ios-arm64")
+    echo "arm64"
     ;;
   esac
 }
@@ -123,5 +123,5 @@ install_xcframework() {
   echo "Copied $source to $destination"
 }
 
-install_xcframework "${PODS_ROOT}/../../../iosSDK/cocoapods/Stonly.xcframework" "Stonly" "framework" "ios-arm64_x86_64-simulator" "ios-arm64" "ios-arm64_x86_64-maccatalyst"
+install_xcframework "${PODS_ROOT}/../../../iosSDK/cocoapods/Stonly.xcframework" "Stonly" "framework" "ios-arm64_x86_64-simulator" "ios-arm64_x86_64-maccatalyst" "ios-arm64"
 
