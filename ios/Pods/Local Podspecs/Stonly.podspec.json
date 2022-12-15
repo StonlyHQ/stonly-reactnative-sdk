@@ -14,7 +14,7 @@
   },
   "source": {
     "git": "https://github.com/StonlyHQ/stonly-ios-sdk.git",
-    "tag": "v0.1.4"
+    "tag": "v0.1.5"
   },
   "swift_versions": "5.5.2",
   "platforms": {

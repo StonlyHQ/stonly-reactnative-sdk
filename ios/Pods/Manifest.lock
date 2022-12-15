@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "~/dev/stonly/iosSDK/cocoapods/"
 
 SPEC CHECKSUMS:
-  Stonly: eab5284a525a1cce1d498bfb49e5c820066eb5b5
+  Stonly: f45a2bb9ddf8ca3fd012ea5aceccb3535ef9b6b8
 
 PODFILE CHECKSUM: 8d5c68400bd606881fb1aef60b52762177042b30
 
