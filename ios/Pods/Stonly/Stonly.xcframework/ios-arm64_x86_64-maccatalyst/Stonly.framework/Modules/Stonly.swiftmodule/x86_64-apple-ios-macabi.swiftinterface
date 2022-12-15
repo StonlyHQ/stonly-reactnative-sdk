@@ -1,0 +1,73 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)
+// swift-module-flags: -target x86_64-apple-ios13.1-macabi -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name Stonly
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import CoreGraphics
+import Darwin
+import Foundation
+import SafariServices
+@_exported import Stonly
+import Swift
+import UIKit
+import WebKit
+import _Concurrency
+import _StringProcessing
+import os.log
+import os
+@objc(StonlyWidgetDelegate) public protocol WidgetDelegate {
+  @objc(stonlyWidgetDidSendEvent:) optional func stonlyWidgetDidSend(event: Any)
+  @objc(stonlyWidgetWillOpenWithWidgetRuleId:window:) optional func stonlyWidgetWillOpen(widgetRuleId: Swift.String, window: UIKit.UIWindow?)
+  @objc(stonlyWidgetDidCloseWithWidgetRuleId:window:) optional func stonlyWidgetDidClose(widgetRuleId: Swift.String, window: UIKit.UIWindow?)
+  @objc(stonlyWidgetDidFailLoadingWithError:) optional func stonlyWidgetDidFailLoading(error: Swift.Error)
+}
+@_inheritsConvenienceInitializers @objc(StonlyWidget) public class Widget : ObjectiveC.NSObject {
+  @available(iOS 13.0, *)
+  @objc public class func handleURL(_ url: Foundation.URL, scene: UIKit.UIScene) -> Swift.Bool
+  @objc public class func handleURL(_ url: Foundation.URL) -> Swift.Bool
+  @objc public class var widgetId: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc(debugEnabled) public class var isDebugEnabled: Swift.Bool {
+    @objc(isDebugEnabled) get
+    @objc set
+  }
+  @objc(monitoringEnabled) public class var isMonitoringEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc weak public static var delegate: Stonly.WidgetDelegate?
+  @objc public class func setSegmentAnonymousId(_ segmentAnonymousId: Swift.String?)
+  @objc public class func sendData(_ data: Any)
+  @objc public class func clearSentData()
+  @objc public class func setWidgetLanguage(_ languageCode: Swift.String?)
+  @objc public class func setWindowLevel(_ windowLevel: UIKit.UIWindow.Level)
+  @objc public class func openGuide(_ guideId: Swift.String, stepId: Swift.String? = nil, widgetOptions: Stonly.Widget.Options? = nil, window: UIKit.UIWindow? = nil)
+  @objc public class func openGuidedTour(_ guideId: Swift.String, stepId: Swift.String? = nil, window: UIKit.UIWindow? = nil)
+  @objc public class func openKnowledgeBase(_ teamKnowledgeBaseId: Swift.String, folderId: Swift.String?, window: UIKit.UIWindow? = nil)
+  @objc public class func closeWidget(_ widgetRuleId: Swift.String? = nil, window: UIKit.UIWindow? = nil)
+  @_inheritsConvenienceInitializers @objc(StonlyWidgetOptions) public class Options : ObjectiveC.NSObject {
+    @objc public var placement: Stonly.Widget.Options.Placement
+    @objc(StonlyWidgetPlacement) public enum Placement : Swift.Int {
+      case sheet
+      case dialog
+      case popover
+      case fullscreen
+      public init?(rawValue: Swift.Int)
+      public typealias RawValue = Swift.Int
+      public var rawValue: Swift.Int {
+        get
+      }
+    }
+    @objc override dynamic public init()
+    @objc deinit
+  }
+  @objc public class func identify(_ customerId: Swift.String, properties: [Swift.String : Any]? = nil)
+  @objc public class func track(_ eventName: Swift.String)
+  @objc public class func didChangeScreen(_ screenName: Swift.String, tabIndex: Swift.Int)
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension Stonly.Widget.Options.Placement : Swift.Equatable {}
+extension Stonly.Widget.Options.Placement : Swift.Hashable {}
+extension Stonly.Widget.Options.Placement : Swift.RawRepresentable {}

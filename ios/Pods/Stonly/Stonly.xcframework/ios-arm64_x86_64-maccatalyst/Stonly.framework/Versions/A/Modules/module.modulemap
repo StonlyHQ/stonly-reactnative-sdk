@@ -1,0 +1,11 @@
+framework module Stonly {
+  umbrella header "Stonly.h"
+
+  export *
+  module * { export * }
+}
+
+module Stonly.Swift {
+  header "Stonly-Swift.h"
+  requires objc
+}
