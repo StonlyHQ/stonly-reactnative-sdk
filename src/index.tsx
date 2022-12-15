@@ -4,11 +4,11 @@ import { ConfigManager } from './configManager'
 import { WidgetManager } from './widgetManager'
 
 export const Stonly = {
-   setup(navigation: any) {
-     NavigationManager.setup(navigation);
+   setupNavigation(navigation: any) {
+     NavigationManager.setupNavigation(navigation);
    },
-   setNavigation(navigationRef: any) {
-     NavigationManager.setNavigation(navigationRef);
+   setupNativeNavigation(navigationRef: any) {
+     NavigationManager.setupNativeNavigation(navigationRef);
    },
    identify(customerId: string, properties = {}) {
      TrackerManager.identify(customerId, properties);

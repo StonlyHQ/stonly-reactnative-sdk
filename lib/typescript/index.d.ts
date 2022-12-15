@@ -1,6 +1,6 @@
 export declare const Stonly: {
-    setup(navigation: any): void;
-    setNavigation(navigationRef: any): void;
+    setupNavigation(navigation: any): void;
+    setupNativeNavigation(navigationRef: any): void;
     identify(customerId: string, properties?: {}): void;
     track(eventName: string): void;
     setWidgetId(widgetId: string): void;
