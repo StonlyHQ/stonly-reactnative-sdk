@@ -1,5 +1,5 @@
 PODS:
-  - Stonly (0.1.6)
+  - Stonly (0.1.8)
 
 DEPENDENCIES:
   - Stonly
@@ -9,7 +9,7 @@ SPEC REPOS:
     - Stonly
 
 SPEC CHECKSUMS:
-  Stonly: 168906e6e6a1bc7742a9ad32e495289afbf67e87
+  Stonly: 3394e7e1767a3faff8f39718e1a3f01f02904bb5
 
 PODFILE CHECKSUM: 10aeae4a28bb6478a944dff0b108c32cd072444e
 
