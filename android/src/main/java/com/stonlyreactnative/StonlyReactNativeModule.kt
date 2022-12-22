@@ -1,6 +1,7 @@
 package com.stonlyreactnative
 
 import android.app.Application
+import android.content.Intent
 import android.util.Log
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
@@ -95,6 +96,10 @@ class StonlyReactNativeModule(reactContext: ReactApplicationContext) :
 
     fun setWidgetId(key: String, application: Application) {
       Stonly.setWidgetId(key, application)
+    }
+
+    fun register(intent: Intent) {
+      Stonly.register(intent)
     }
   }
 }
