@@ -16,9 +16,6 @@ export const Stonly = {
    track(eventName: string) {
      TrackerManager.track(eventName);
    },
-   setWidgetId(widgetId: string) {
-     ConfigManager.setWidgetId(widgetId);
-   },
    setDebugEnabled(debugEnabled: boolean) {
      ConfigManager.setDebugEnabled(debugEnabled);
    },

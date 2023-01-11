@@ -18,9 +18,6 @@ const StonlyReactNative = NativeModules.StonlyReactNative
     );
 
 export const ConfigManager = {
-   setWidgetId(widgetId: string) {
-     StonlyReactNative.setWidgetId(widgetId);
-   },
    setDebugEnabled(debugEnabled: boolean) {
      StonlyReactNative.setDebugEnabled(debugEnabled);
    },
