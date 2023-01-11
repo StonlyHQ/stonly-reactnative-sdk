@@ -21,39 +21,38 @@ class StonlyReactNativeModule(reactContext: ReactApplicationContext) :
     Stonly.onScreenChanged(screenName, index)
   }
 
+  //CONFIGURATION
+
   @ReactMethod
-  fun setWidgetId(widgetId: String) {
-    Log.d(NAME, "This function doesn't exist on Android")
+  fun setDebugEnabled(enabled: Boolean) {
+    Stonly.setDebugEnabled(enabled)
   }
 
   @ReactMethod
-  fun setDebugEnabled(debugEnabled: Boolean) {
-    Log.d(NAME, "This function doesn't exist on Android")
-  }
-
-  @ReactMethod
-  fun setMonitoringEnabled(debugEnabled: Boolean) {
-    Log.d(NAME, "This function doesn't exist on Android")
+  fun setMonitoringEnabled(enabled: Boolean) {
+    Stonly.setMonitoringEnabled(enabled)
   }
 
   @ReactMethod
   fun setSegmentAnonymousId(segmentAnonymousId: String) {
-    Log.d(NAME, "This function doesn't exist on Android")
-  }
-
-  @ReactMethod
-  fun sendData(widgetId: Any) {
-    Log.d(NAME, "This function doesn't exist on Android")
-  }
-
-  @ReactMethod
-  fun clearSentData() {
-    Log.d(NAME, "This function doesn't exist on Android")
+    Stonly.setSegmentAnonymousId(segmentAnonymousId)
   }
 
   @ReactMethod
   fun setWidgetLanguage(languageCode: String) {
     Stonly.setWidgetLanguage(languageCode)
+  }
+
+  //WIDGET
+
+  @ReactMethod
+  fun sendData(data: Any) {
+    Stonly.sendData(data)
+  }
+
+  @ReactMethod
+  fun clearSentData() {
+    Stonly.clearSentData()
   }
 
   @ReactMethod
