@@ -3,7 +3,6 @@ export declare const Stonly: {
     setupNativeNavigation(navigationRef: any): void;
     identify(customerId: string, properties?: {}): void;
     track(eventName: string): void;
-    setWidgetId(widgetId: string): void;
     setDebugEnabled(debugEnabled: boolean): void;
     setMonitoringEnabled(monitoringEnabled: boolean): void;
     setSegmentAnonymousId(segmentAnonymousId: string): void;
