@@ -1,5 +1,5 @@
 export declare const NavigationManager: {
-    setupNavigation(navigation: any): void;
-    setupNativeNavigation(navigationRef: any): void;
+    setupNativeNavigation(navigation: any): void;
+    setupNavigation(navigationRef: any): void;
 };
 //# sourceMappingURL=navigationManager.d.ts.map
