@@ -81,7 +81,7 @@ RCT_EXPORT_METHOD(openGuide:(NSString*)guideId stepId:(NSString*)stepId widgetOp
   if ([placementString isEqualToString:@"FULL_SCREEN"]) {
     placement = StonlyWidgetPlacementFullscreen;
   }
-  
+
   StonlyWidgetOptions* options = StonlyWidgetOptions.new;
   options.placement = placement;
 
@@ -105,7 +105,7 @@ RCT_EXPORT_METHOD(closeWidget:(NSString*)widgetRuleId)
 
 RCT_EXPORT_METHOD(identify:(NSString*)customerId properties:(NSDictionary*)properties)
 {
-  [StonlyWidget identify:customerId properties:properties];
+  [StonlyWidget identify:customerId properties:properties darkMode:false];
 }
 
 RCT_EXPORT_METHOD(track:(NSString*)eventName)
@@ -119,7 +119,7 @@ RCT_EXPORT_METHOD(handleURL:(NSString*)urlString)
   if (!url) {
     return;
   }
-  
+
   //Cast to void to ignore result
   (void)[StonlyWidget handleURL:url];
 }

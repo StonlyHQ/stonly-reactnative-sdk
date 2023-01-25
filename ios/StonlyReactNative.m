@@ -16,7 +16,7 @@ RCT_EXPORT_METHOD(openGuidedTour:(NSString*)guideId stepId:(NSString*)stepId)
 
 RCT_EXPORT_METHOD(identify:(NSString*)customerId properties:(NSDictionary*)properties)
 {
-  [StonlyWidget identify:customerId properties:properties];
+  [StonlyWidget identify:customerId properties:properties darkMode:false];
 }
 
 RCT_EXPORT_METHOD(track:(NSString*)eventName)
