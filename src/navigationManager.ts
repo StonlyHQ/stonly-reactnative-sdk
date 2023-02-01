@@ -18,33 +18,22 @@ const StonlyReactNative = NativeModules.StonlyReactNative
     );
 
 export const NavigationManager = {
-   setupNativeNavigation(navigation: any) {
+   setupNativeNavigation(navigation: any) { // react-native-navigation
      navigation.events().registerComponentDidAppearListener((event : any) => {
        console.log('stonly event', event); //  componentName: 'Home',componentId: 'Component1',
        StonlyReactNative.onScreenChanged(event.componentName, -1);
      });
    },
-   setupNavigation(navigationRef: any) {
+   setupNavigation(navigationRef: any) { // react-navigation
      navigationRef.addListener('state', (e : any) => {
-       let routeName = '';
-       let index = null;
-       e.data.state?.routes?.forEach((element : any) => {
-         index = element.state?.index;
-         if (typeof element === 'string') {
-           routeName += '/' + element;
-         }
-         // type = element.data.state?.type
-         if (element.state && element.state?.routeNames && index) {
-           routeName = '/' + element.state?.routeNames[index];
-         }
-         console.log('stonly event index: ', index);
-       });
-       console.log('stonly event routeName: ', routeName);
-       console.log('stonly event index: ', index);
-       if (index == null) {
-         index = -1;
-       }
-       StonlyReactNative.onScreenChanged(routeName, index);
+        let routeName = "/" + navigationRef.current.getCurrentRoute().name;
+        let index = -1;
+        e.data.state?.routes?.forEach((element : any) => {
+          index = element.state?.index;
+        });
+        console.log('stonly event routeName: ', routeName);
+        console.log('stonly event index: ', index);
+        StonlyReactNative.onScreenChanged(routeName, index);
      });
    }
 }
