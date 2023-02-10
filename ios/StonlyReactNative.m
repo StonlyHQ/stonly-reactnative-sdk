@@ -7,7 +7,7 @@
   return dispatch_get_main_queue();
 }
 
-RCT_EXTERN_METHOD(onScreenChanged:(NSString*)screenName tabIndex:(int)tabIndex)
+RCT_EXTERN_METHOD(onScreenChanged:(NSString*)screenName)
 
 RCT_EXPORT_METHOD(openGuidedTour:(NSString*)guideId stepId:(NSString*)stepId)
 {

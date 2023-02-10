@@ -4,7 +4,7 @@ import Stonly
 class StonlyReactNative: NSObject {
     
     @objc(onScreenChanged:tabIndex:)
-    func onScreenChanged(screenName: String, tabIndex: Int) -> Void {
-        Stonly.Widget.didChangeScreen(screenName, tabIndex: tabIndex)
+    func onScreenChanged(screenName: String) -> Void {
+        Stonly.Widget.didChangeScreen(screenName)
     }
 }

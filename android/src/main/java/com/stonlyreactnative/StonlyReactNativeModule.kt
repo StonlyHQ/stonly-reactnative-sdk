@@ -17,8 +17,8 @@ class StonlyReactNativeModule(reactContext: ReactApplicationContext) :
   }
 
   @ReactMethod
-  fun onScreenChanged(screenName: String, index: Int) {
-    Stonly.onScreenChanged(screenName, index)
+  fun onScreenChanged(screenName: String) {
+    Stonly.onScreenChanged(screenName)
   }
 
   //CONFIGURATION
