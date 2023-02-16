@@ -25,7 +25,7 @@ export const NavigationManager = {
      });
    },
    setupNavigation(navigationRef: any) { // react-navigation
-     navigationRef.addListener('state', (e : any) => {
+     navigationRef.addListener('state', (_ : any) => {
         let routeName = "/" + navigationRef.current.getCurrentRoute().name;
         console.log('stonly event routeName: ', routeName);
         StonlyReactNative.onScreenChanged(routeName);
