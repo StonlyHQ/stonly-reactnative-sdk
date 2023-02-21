@@ -1,5 +1,4 @@
 import { NativeModules, Platform } from 'react-native';
-
 const LINKING_ERROR =
   `The package 'stonly-react-native' doesn't seem to be linked. Make sure: \n\n` +
   Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
@@ -26,7 +25,7 @@ export const NavigationManager = {
    },
    setupNavigation(navigationRef: any) { // react-navigation
      navigationRef.addListener('state', (_ : any) => {
-        let routeName = "/" + navigationRef.current.getCurrentRoute().name;
+        let routeName = "/" + navigationRef.getCurrentRoute().name;
         console.log('stonly event routeName: ', routeName);
         StonlyReactNative.onScreenChanged(routeName);
      });
