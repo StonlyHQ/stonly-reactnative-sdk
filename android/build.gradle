@@ -137,7 +137,7 @@ def kotlin_version = getExtOrDefault('kotlinVersion')
 dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
     implementation "com.facebook.react:react-native:+"
-    implementation 'com.github.StonlyHQ:stonly-android-sdk:v0.1.22'
+    implementation 'com.github.StonlyHQ:stonly-android-sdk:v0.1.24'
 // From node_modules
 }
 
