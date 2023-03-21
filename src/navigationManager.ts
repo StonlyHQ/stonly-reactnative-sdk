@@ -19,14 +19,12 @@ const StonlyReactNative = NativeModules.StonlyReactNative
 export const NavigationManager = {
    setupNativeNavigation(navigation: any) { // react-native-navigation
      navigation.events().registerComponentDidAppearListener((event : any) => {
-       console.log('stonly event', event); //  componentName: 'Home',componentId: 'Component1',
        StonlyReactNative.onScreenChanged(event.componentName);
      });
    },
    setupNavigation(navigationRef: any) { // react-navigation
      navigationRef.addListener('state', (_ : any) => {
         let routeName = "/" + navigationRef.getCurrentRoute().name;
-        console.log('stonly event routeName: ', routeName);
         StonlyReactNative.onScreenChanged(routeName);
      });
    }
