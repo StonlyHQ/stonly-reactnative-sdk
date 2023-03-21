@@ -38,7 +38,7 @@ export const WidgetManager = {
    },
    closeWidget(widgetRuleId: string) {
      StonlyReactNative.closeWidget(widgetRuleId);
-   }
+   },
    setStonlyEnabled(enabled: boolean) {
     StonlyReactNative.setStonlyEnabled(enabled);
    }
