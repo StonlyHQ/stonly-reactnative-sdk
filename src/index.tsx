@@ -49,4 +49,7 @@ export const Stonly = {
    closeWidget(widgetRuleId: string) {
      WidgetManager.closeWidget(widgetRuleId);
    }
+   setStonlyEnabled(enabled: boolean) {
+    WidgetManager.setStonlyEnabled(enabled);
+   }
 }

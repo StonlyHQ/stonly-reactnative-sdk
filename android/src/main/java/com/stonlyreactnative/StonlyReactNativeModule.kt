@@ -90,6 +90,11 @@ class StonlyReactNativeModule(reactContext: ReactApplicationContext) :
     Stonly.tracker?.track(eventName)
   }
 
+  @ReactMethod
+  fun setStonlyEnabled(enabled: Boolean) {
+    Stonly.setStonlyEnabled(enabled)
+  }
+
   companion object {
     const val NAME = "StonlyReactNative"
 
