@@ -14,5 +14,6 @@ export declare const Stonly: {
     openGuidedTour(guideId: string, stepId?: null): void;
     openKnowledgeBase(teamKnowledgeBaseId: string, folderId?: null): void;
     closeWidget(widgetRuleId: string): void;
+    setStonlyEnabled(enabled: boolean): void;
 };
 //# sourceMappingURL=index.d.ts.map

@@ -6,5 +6,6 @@ export declare const WidgetManager: {
     openGuidedTour(guideId: string, stepId?: null): void;
     openKnowledgeBase(teamKnowledgeBaseId: string, folderId?: null): void;
     closeWidget(widgetRuleId: string): void;
+    setStonlyEnabled(enabled: boolean): void;
 };
 //# sourceMappingURL=widgetManager.d.ts.map
