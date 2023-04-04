@@ -24,7 +24,7 @@ RCT_EXPORT_METHOD(track:(NSString*)eventName)
   [StonlyWidget track:eventName];
 }
 
-RCT_EXPORT_METHOD(setStonlyEnabled:(BOOL*)enabled)
+RCT_EXPORT_METHOD(setStonlyEnabled:(BOOL)enabled)
 {
   [StonlyWidget setStonlyEnabled:enabled];
 }
