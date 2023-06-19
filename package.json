@@ -1,6 +1,6 @@
 {
   "name": "stonly-react-native",
-  "version": "0.1.24",
+  "version": "0.1.27",
   "description": "Stonly implementation for React-Native",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
