@@ -6,6 +6,6 @@ target 'StonlyReactNative' do
   use_frameworks!
 
   # Pods for StonlyReactNative
-  pod 'Stonly', '0.1.17'
+  pod 'Stonly', '1.0.4'
 
 end
