@@ -29,4 +29,18 @@ RCT_EXPORT_METHOD(setStonlyEnabled:(BOOL)enabled)
   [StonlyWidget setStonlyEnabled:enabled];
 }
 
+RCT_EXPORT_METHOD(setWidgetId:(NSString*)widgetId)
+{
+  [StonlyWidget setWidgetId:widgetId];
+}
+RCT_EXPORT_SYNCHRONOUS_TYPED_METHOD(NSString *, getWidgetId)
+{
+  return [StonlyWidget widgetId];
+}
+
+RCT_EXPORT_METHOD(setAuthorizedDomains:(NSArray<NSString *>*)domains)
+{
+  [StonlyWidget authorizedDomains:domains];
+}
+ 
 @end

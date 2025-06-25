@@ -1,0 +1,28 @@
+{
+  "name": "stonly-react-native-plugin",
+  "version": "1.0.0",
+  "description": "Expo config plugin for Stonly React Native SDK",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf build"
+  },
+  "keywords": [
+    "expo",
+    "expo-plugin",
+    "react-native",
+    "stonly"
+  ],
+  "author": "Stonly",
+  "license": "MIT",
+  "dependencies": {
+    "@expo/config-plugins": "^8.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "peerDependencies": {
+    "expo": "*"
+  }
+} 

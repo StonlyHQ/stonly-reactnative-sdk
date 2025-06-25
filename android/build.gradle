@@ -4,8 +4,8 @@ buildscript {
 
     repositories {
         google()
-        mavenCentral()
-        maven { url "https://jitpack.io" }
+        mavenCentral() 
+        maven { url "https://jitpack.io" } 
         flatDir {
             dirs 'libs'
         }
@@ -64,7 +64,7 @@ android {
 
 repositories {
     mavenCentral()
-    google()
+    google() 
 
     def found = false
     def defaultDir = null
@@ -125,7 +125,7 @@ repositories {
     }
 
     if (!found) {
-        throw new GradleException(
+        throw new Exception(
                 "${project.name}: unable to locate React Native android sources. " +
                         "Ensure you have you installed React Native as a dependency in your project and try again."
         )
@@ -136,8 +136,10 @@ def kotlin_version = getExtOrDefault('kotlinVersion')
 
 dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
-    implementation "com.facebook.react:react-native:+"
-    implementation 'com.github.StonlyHQ:stonly-android-sdk:v1.0.3'
+    implementation "com.facebook.react:react-native:+" 
+
+    implementation 'com.github.StonlyHQ:stonly-android-sdk:v1.0.7'
+ 
 // From node_modules
 }
 

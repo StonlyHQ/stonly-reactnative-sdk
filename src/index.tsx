@@ -2,6 +2,7 @@ import { NavigationManager} from './navigationManager'
 import { TrackerManager } from './trackerManager'
 import { ConfigManager } from './configManager'
 import { WidgetManager } from './widgetManager'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const Stonly = {
    setupNavigation(navigation: any) {
@@ -51,5 +52,29 @@ export const Stonly = {
    },
    setStonlyEnabled(enabled: boolean) {
     WidgetManager.setStonlyEnabled(enabled);
+   },
+   async getWidgetId(): Promise<string> {
+    return ConfigManager.getWidgetId();
+   },
+   
+   async setWidgetId(widgetId: string) {
+    ConfigManager.setWidgetId(widgetId);
+    // Save to AsyncStorage for persistence
+    try {
+      await AsyncStorage.setItem('@stonly_widget_id', widgetId);
+    } catch (error) {
+      console.warn('Failed to save widget ID to AsyncStorage:', error);
+    }
+   },
+   async getStoredWidgetId(): Promise<string | null> {
+    try {
+      return await AsyncStorage.getItem('@stonly_widget_id');
+    } catch (error) {
+      console.warn('Failed to get widget ID from AsyncStorage:', error);
+      return null;
+    }
+   },
+   setAuthorizedDomains(domains: string[]) {
+    ConfigManager.setAuthorizedDomains(domains);
    }
 }

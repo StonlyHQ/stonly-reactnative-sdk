@@ -30,6 +30,17 @@ RCT_EXPORT_METHOD(setWidgetId:(NSString *)widgetId)
   StonlyWidget.widgetId = widgetId;
 }
 
+RCT_EXPORT_METHOD(getWidgetIdAsync:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject)
+{
+  NSString *widgetId = StonlyWidget.widgetId;
+  if (widgetId) {
+    resolve(widgetId);
+  } else {
+    resolve(@"");
+  }
+}
+
 RCT_EXPORT_METHOD(setDebugEnabled:(BOOL)debugEnabled)
 {
   StonlyWidget.debugEnabled = debugEnabled;
@@ -112,6 +123,8 @@ RCT_EXPORT_METHOD(track:(NSString*)eventName)
 {
   [StonlyWidget track:eventName];
 }
+ 
+ 
 
 RCT_EXPORT_METHOD(handleURL:(NSString*)urlString)
 {

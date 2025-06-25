@@ -15,5 +15,9 @@ export declare const Stonly: {
     openKnowledgeBase(teamKnowledgeBaseId: string, folderId?: null): void;
     closeWidget(widgetRuleId: string): void;
     setStonlyEnabled(enabled: boolean): void;
+    getWidgetId(): Promise<string>;
+    setWidgetId(widgetId: string): Promise<void>;
+    getStoredWidgetId(): Promise<string | null>;
+    setAuthorizedDomains(domains: string[]): void;
 };
 //# sourceMappingURL=index.d.ts.map

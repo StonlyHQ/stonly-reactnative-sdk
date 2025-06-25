@@ -7,4 +7,9 @@ class StonlyReactNative: NSObject {
     func onScreenChanged(screenName: String) -> Void {
         Stonly.Widget.didChangeScreen(screenName)
     }
+    
+    @objc
+    func getWidgetId() -> String {
+        return Stonly.Widget.widgetId ?? "NOT_DEFINED"
+    }
 }
