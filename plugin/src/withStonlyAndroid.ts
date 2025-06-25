@@ -8,7 +8,10 @@ import {
 import type { StonlyPluginProps } from './withStonly';
 
 // Helper function to add Stonly imports and initialization to MainApplication.kt
-function addStonlyToMainApplication(contents: string, widgetId: string): string {
+function addStonlyToMainApplication(
+  contents: string,
+  widgetId: string
+): string {
   // Add import if not already present
   const importLine = 'import com.stonlyreactnative.StonlyReactNativeModule;';
   if (!contents.includes(importLine)) {
@@ -25,15 +28,20 @@ function addStonlyToMainApplication(contents: string, widgetId: string): string 
 
   // Add setWidgetId call in onCreate method
   const setWidgetIdLine = `if (!StonlyReactNativeModule.setWidgetIdFromStorage(this)) {    StonlyReactNativeModule.Companion.setWidgetId("${widgetId}", this)  }`;
-  
+
   if (!contents.includes('StonlyReactNativeModule.Companion.setWidgetId')) {
-    const onCreateRegex = /(ApplicationLifecycleDispatcher\.onApplicationCreate\(this\))/;
+    const onCreateRegex =
+      /(ApplicationLifecycleDispatcher\.onApplicationCreate\(this\))/;
     if (onCreateRegex.test(contents)) {
       contents = contents.replace(onCreateRegex, `$1\n${setWidgetIdLine}`);
     } else {
       // Fallback: add at the end of onCreate method
-      const onCreateEndRegex = /(override fun onCreate\(\) \{[\s\S]*?)(super\.onCreate\(\)[\s\S]*?)(\s+\})/;
-      contents = contents.replace(onCreateEndRegex, `$1$2\n${setWidgetIdLine}$3`);
+      const onCreateEndRegex =
+        /(override fun onCreate\(\) \{[\s\S]*?)(super\.onCreate\(\)[\s\S]*?)(\s+\})/;
+      contents = contents.replace(
+        onCreateEndRegex,
+        `$1$2\n${setWidgetIdLine}$3`
+      );
     }
   }
 
@@ -100,8 +108,10 @@ export const withStonlyAndroid: ConfigPlugin<StonlyPluginProps> = (
   // Add URL scheme(s) to AndroidManifest.xml if provided
   if (androidUrlScheme) {
     // Normalize to array for consistent processing
-    const schemes = Array.isArray(androidUrlScheme) ? androidUrlScheme : [androidUrlScheme];
-    
+    const schemes = Array.isArray(androidUrlScheme)
+      ? androidUrlScheme
+      : [androidUrlScheme];
+
     config = withAndroidManifest(config, (config) => {
       const mainActivity = AndroidConfig.Manifest.getMainActivityOrThrow(
         config.modResults
@@ -122,7 +132,7 @@ export const withStonlyAndroid: ConfigPlugin<StonlyPluginProps> = (
           ],
           data: [],
         };
-        
+
         if (!mainActivity['intent-filter']) {
           mainActivity['intent-filter'] = [];
         }
@@ -150,4 +160,4 @@ export const withStonlyAndroid: ConfigPlugin<StonlyPluginProps> = (
   }
 
   return config;
-}; 
+};

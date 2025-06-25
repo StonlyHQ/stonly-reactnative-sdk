@@ -1,17 +1,15 @@
 import type { ConfigPlugin } from 'expo/config-plugins';
-import {
-  withAppDelegate,
-  withInfoPlist,
-} from 'expo/config-plugins';
+import { withAppDelegate, withInfoPlist } from 'expo/config-plugins';
 import type { StonlyPluginProps } from './withStonly';
 
 // Helper function to add Stonly configuration to AppDelegate.swift
 function addStonlyToAppDelegate(contents: string, widgetId: string): string {
   // Check if this is a Swift file by looking for Expo SDK 53+ markers
-  const isSwiftFile = contents.includes('import Expo') || 
-                      contents.includes('@UIApplicationMain') || 
-                      contents.includes('ExpoAppDelegate');
-  
+  const isSwiftFile =
+    contents.includes('import Expo') ||
+    contents.includes('@UIApplicationMain') ||
+    contents.includes('ExpoAppDelegate');
+
   if (isSwiftFile) {
     return addStonlyToSwiftAppDelegate(contents, widgetId);
   } else {
@@ -21,7 +19,10 @@ function addStonlyToAppDelegate(contents: string, widgetId: string): string {
 }
 
 // Swift AppDelegate configuration for Expo SDK 53+
-function addStonlyToSwiftAppDelegate(contents: string, widgetId: string): string {
+function addStonlyToSwiftAppDelegate(
+  contents: string,
+  widgetId: string
+): string {
   // Add Stonly import if not already present
   const stonlyImport = 'import Stonly';
   if (!contents.includes(stonlyImport)) {
@@ -40,7 +41,8 @@ function addStonlyToSwiftAppDelegate(contents: string, widgetId: string): string
   const widgetIdLine = `    Stonly.Widget.widgetId = "${widgetId}"`;
   if (!contents.includes('Stonly.Widget.widgetId')) {
     // Find the didFinishLaunchingWithOptions method and add configuration before return statement
-    const didFinishRegex = /(return super\.application\(application, didFinishLaunchingWithOptions: launchOptions\))/;
+    const didFinishRegex =
+      /(return super\.application\(application, didFinishLaunchingWithOptions: launchOptions\))/;
     if (didFinishRegex.test(contents)) {
       contents = contents.replace(didFinishRegex, `${widgetIdLine}\n\n    $1`);
     }
@@ -60,11 +62,16 @@ function addStonlyToSwiftAppDelegate(contents: string, widgetId: string): string
 
   if (!contents.includes('Stonly.Widget.handleURL')) {
     // Check if there's already an openURL method
-    const existingOpenURLRegex = /public override func application\(\s*_ app: UIApplication,\s*open url: URL/;
+    const existingOpenURLRegex =
+      /public override func application\(\s*_ app: UIApplication,\s*open url: URL/;
     if (existingOpenURLRegex.test(contents)) {
       // Add Stonly.Widget.handleURL to existing method
-      const openURLRegex = /(public override func application\(\s*_ app: UIApplication,\s*open url: URL[^{]*\{)/;
-      contents = contents.replace(openURLRegex, `$1\n    Stonly.Widget.handleURL(url)`);
+      const openURLRegex =
+        /(public override func application\(\s*_ app: UIApplication,\s*open url: URL[^{]*\{)/;
+      contents = contents.replace(
+        openURLRegex,
+        `$1\n    Stonly.Widget.handleURL(url)`
+      );
     } else {
       // Add new openURL method before the closing brace of AppDelegate class
       const classEndRegex = /(}\s*class ReactNativeDelegate)/;
@@ -82,7 +89,10 @@ function addStonlyToSwiftAppDelegate(contents: string, widgetId: string): string
 }
 
 // Legacy Objective-C AppDelegate configuration for older SDK versions
-function addStonlyToObjCAppDelegate(contents: string, widgetId: string): string {
+function addStonlyToObjCAppDelegate(
+  contents: string,
+  widgetId: string
+): string {
   // Add Stonly import if not already present
   const stonlyImport = '#import <Stonly/Stonly-Swift.h>';
   if (!contents.includes(stonlyImport)) {
@@ -92,7 +102,10 @@ function addStonlyToObjCAppDelegate(contents: string, widgetId: string): string 
     if (imports.length > 0) {
       const lastReactImport = imports[imports.length - 1];
       if (lastReactImport) {
-        contents = contents.replace(lastReactImport, `${lastReactImport}${stonlyImport}\n`);
+        contents = contents.replace(
+          lastReactImport,
+          `${lastReactImport}${stonlyImport}\n`
+        );
       }
     } else {
       // Fallback: add after first import
@@ -109,7 +122,8 @@ function addStonlyToObjCAppDelegate(contents: string, widgetId: string): string 
       contents = contents.replace(didFinishRegex, `$1\n\n${widgetIdLine}`);
     } else {
       // Fallback: add before return statement in didFinishLaunchingWithOptions
-      const returnRegex = /(- \(BOOL\)application:\(UIApplication \*\)application didFinishLaunchingWithOptions:[\s\S]*?)(return \[super application:application didFinishLaunchingWithOptions:launchOptions\];)/;
+      const returnRegex =
+        /(- \(BOOL\)application:\(UIApplication \*\)application didFinishLaunchingWithOptions:[\s\S]*?)(return \[super application:application didFinishLaunchingWithOptions:launchOptions\];)/;
       contents = contents.replace(returnRegex, `$1${widgetIdLine}\n  $2`);
     }
   }
@@ -125,11 +139,16 @@ function addStonlyToObjCAppDelegate(contents: string, widgetId: string): string 
 
   if (!contents.includes('[StonlyWidget handleURL:url]')) {
     // Check if openURL method already exists
-    const existingOpenURLRegex = /- \(BOOL\)application:\(UIApplication \*\)application\s+openURL:\(NSURL \*\)url\s+options:/;
+    const existingOpenURLRegex =
+      /- \(BOOL\)application:\(UIApplication \*\)application\s+openURL:\(NSURL \*\)url\s+options:/;
     if (existingOpenURLRegex.test(contents)) {
       // Add StonlyWidget.handleURL to existing method
-      const openURLRegex = /(- \(BOOL\)application:\(UIApplication \*\)application\s+openURL:\(NSURL \*\)url\s+options:[\s\S]*?\{)/;
-      contents = contents.replace(openURLRegex, `$1\n  [StonlyWidget handleURL:url];`);
+      const openURLRegex =
+        /(- \(BOOL\)application:\(UIApplication \*\)application\s+openURL:\(NSURL \*\)url\s+options:[\s\S]*?\{)/;
+      contents = contents.replace(
+        openURLRegex,
+        `$1\n  [StonlyWidget handleURL:url];`
+      );
     } else {
       // Add new openURL method before @end
       const endRegex = /(@end)/;
@@ -148,10 +167,10 @@ export const withStonlyIOS: ConfigPlugin<StonlyPluginProps> = (
   if (iosUrlScheme) {
     // Normalize to array for consistent processing
     const schemes = Array.isArray(iosUrlScheme) ? iosUrlScheme : [iosUrlScheme];
-    
+
     config = withInfoPlist(config, (config) => {
       const urlTypes = config.modResults.CFBundleURLTypes || [];
-      
+
       schemes.forEach((scheme) => {
         // Check if URL scheme already exists
         const existingUrlType = urlTypes.find((urlType: any) =>
@@ -160,8 +179,10 @@ export const withStonlyIOS: ConfigPlugin<StonlyPluginProps> = (
 
         if (!existingUrlType) {
           // Find existing URL type or create new one
-          let urlType = urlTypes.find((urlType: any) => 
-            urlType.CFBundleURLSchemes && urlType.CFBundleURLSchemes.length > 0
+          let urlType = urlTypes.find(
+            (urlType: any) =>
+              urlType.CFBundleURLSchemes &&
+              urlType.CFBundleURLSchemes.length > 0
           );
 
           if (urlType) {
@@ -193,4 +214,4 @@ export const withStonlyIOS: ConfigPlugin<StonlyPluginProps> = (
   });
 
   return config;
-}; 
+};

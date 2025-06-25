@@ -18,10 +18,10 @@ const StonlyReactNative = NativeModules.StonlyReactNative
     );
 
 export const TrackerManager = {
-   identify(customerId: string, properties = {}) {
-     StonlyReactNative.identify(customerId, properties);
-   },
-   track(eventName: string) {
-     StonlyReactNative.track(eventName);
-   },
-}
+  identify(customerId: string, properties = {}) {
+    StonlyReactNative.identify(customerId, properties);
+  },
+  track(eventName: string) {
+    StonlyReactNative.track(eventName);
+  },
+};

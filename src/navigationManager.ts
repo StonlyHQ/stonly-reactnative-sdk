@@ -17,15 +17,17 @@ const StonlyReactNative = NativeModules.StonlyReactNative
     );
 
 export const NavigationManager = {
-   setupNativeNavigation(navigation: any) { // react-native-navigation
-     navigation.events().registerComponentDidAppearListener((event : any) => {
-       StonlyReactNative.onScreenChanged(event.componentName);
-     });
-   },
-   setupNavigation(navigationRef: any) { // react-navigation
-     navigationRef.addListener('state', (_ : any) => {
-        let routeName = "/" + navigationRef.getCurrentRoute().name;
-        StonlyReactNative.onScreenChanged(routeName);
-     });
-   }
-}
+  setupNativeNavigation(navigation: any) {
+    // react-native-navigation
+    navigation.events().registerComponentDidAppearListener((event: any) => {
+      StonlyReactNative.onScreenChanged(event.componentName);
+    });
+  },
+  setupNavigation(navigationRef: any) {
+    // react-navigation
+    navigationRef.addListener('state', (_: any) => {
+      let routeName = '/' + navigationRef.getCurrentRoute().name;
+      StonlyReactNative.onScreenChanged(routeName);
+    });
+  },
+};

@@ -18,28 +18,28 @@ const StonlyReactNative = NativeModules.StonlyReactNative
     );
 
 export const WidgetManager = {
-   sendData(dataObject: object) {
-     StonlyReactNative.sendData(dataObject);
-   },
-   clearSentData() {
-     StonlyReactNative.clearSentData();
-   },
-   setWindowLevel(windowLevel: number) {
-     StonlyReactNative.setWindowLevel(windowLevel);
-   },
-   openGuide(guideId: string, stepId = null, widgetOptions = {}) {
-     StonlyReactNative.openGuide(guideId, stepId, widgetOptions);
-   },
-   openGuidedTour(guideId: string, stepId = null) {
-     StonlyReactNative.openGuidedTour(guideId, stepId);
-   },
-   openKnowledgeBase(teamKnowledgeBaseId: string, folderId = null) {
-     StonlyReactNative.openKnowledgeBase(teamKnowledgeBaseId, folderId);
-   },
-   closeWidget(widgetRuleId: string) {
-     StonlyReactNative.closeWidget(widgetRuleId);
-   },
-   setStonlyEnabled(enabled: boolean) {
+  sendData(dataObject: object) {
+    StonlyReactNative.sendData(dataObject);
+  },
+  clearSentData() {
+    StonlyReactNative.clearSentData();
+  },
+  setWindowLevel(windowLevel: number) {
+    StonlyReactNative.setWindowLevel(windowLevel);
+  },
+  openGuide(guideId: string, stepId = null, widgetOptions = {}) {
+    StonlyReactNative.openGuide(guideId, stepId, widgetOptions);
+  },
+  openGuidedTour(guideId: string, stepId = null) {
+    StonlyReactNative.openGuidedTour(guideId, stepId);
+  },
+  openKnowledgeBase(teamKnowledgeBaseId: string, folderId = null) {
+    StonlyReactNative.openKnowledgeBase(teamKnowledgeBaseId, folderId);
+  },
+  closeWidget(widgetRuleId: string) {
+    StonlyReactNative.closeWidget(widgetRuleId);
+  },
+  setStonlyEnabled(enabled: boolean) {
     StonlyReactNative.setStonlyEnabled(enabled);
-   }
-}
+  },
+};

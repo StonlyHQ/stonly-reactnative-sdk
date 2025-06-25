@@ -20,4 +20,4 @@ const withStonly: ConfigPlugin<StonlyPluginProps> = (config, props) => {
   ]);
 };
 
-export default withStonly; 
+export default withStonly;
