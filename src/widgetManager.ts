@@ -27,48 +27,51 @@ export const WidgetManager = {
   setWindowLevel(windowLevel: number) {
     StonlyReactNative.setWindowLevel(windowLevel);
   },
-  openGuide(guideId: string, stepId:Number | null = null, widgetOptions = {}) {
-    if(Platform.OS === 'android'){
-      if(stepId && stepId !== null){
+  openGuide(guideId: string, stepId: Number | null = null, widgetOptions = {}) {
+    if (Platform.OS === 'android') {
+      if (stepId && stepId !== null) {
         StonlyReactNative.openGuide(guideId, `${stepId}`);
-      } else{
-        StonlyReactNative.openGuide(guideId,null);
+      } else {
+        StonlyReactNative.openGuide(guideId, null);
       }
-    }else{ 
-       if(stepId && stepId !== null){
-        StonlyReactNative.openGuide(guideId, `${stepId}`,widgetOptions);
-      } else{
-        StonlyReactNative.openGuide(guideId,"",widgetOptions);
-      }
-    } 
-  },
-  openGuidedTour(guideId: string, stepId:Number | null = null) {
-    if(Platform.OS === 'android'){
-      if(stepId && stepId !== null){
-        StonlyReactNative.openGuidedTour(guideId, `${stepId}`);
-      }else{
-        StonlyReactNative.openGuidedTour(guideId,null);
-      }
-    }else{
-      if(stepId && stepId !== null){
-        StonlyReactNative.openGuidedTour(guideId, `${stepId}`);
-      }else{
-        StonlyReactNative.openGuidedTour(guideId,"");
+    } else {
+      if (stepId && stepId !== null) {
+        StonlyReactNative.openGuide(guideId, `${stepId}`, widgetOptions);
+      } else {
+        StonlyReactNative.openGuide(guideId, '', widgetOptions);
       }
     }
   },
-  openKnowledgeBase(teamKnowledgeBaseId: string, folderId:Number | null  = null) {
-    if(Platform.OS === 'android'){
-      if(folderId && folderId !== null){
-        StonlyReactNative.openKnowledgeBase(teamKnowledgeBaseId, `${folderId}`);
-      }else{
-        StonlyReactNative.openKnowledgeBase(teamKnowledgeBaseId,null);
+  openGuidedTour(guideId: string, stepId: Number | null = null) {
+    if (Platform.OS === 'android') {
+      if (stepId && stepId !== null) {
+        StonlyReactNative.openGuidedTour(guideId, `${stepId}`);
+      } else {
+        StonlyReactNative.openGuidedTour(guideId, null);
       }
-    }else{
-      if(folderId && folderId !== null){
+    } else {
+      if (stepId && stepId !== null) {
+        StonlyReactNative.openGuidedTour(guideId, `${stepId}`);
+      } else {
+        StonlyReactNative.openGuidedTour(guideId, '');
+      }
+    }
+  },
+  openKnowledgeBase(
+    teamKnowledgeBaseId: string,
+    folderId: Number | null = null
+  ) {
+    if (Platform.OS === 'android') {
+      if (folderId && folderId !== null) {
         StonlyReactNative.openKnowledgeBase(teamKnowledgeBaseId, `${folderId}`);
-      }else{
-        StonlyReactNative.openKnowledgeBase(teamKnowledgeBaseId,"");
+      } else {
+        StonlyReactNative.openKnowledgeBase(teamKnowledgeBaseId, null);
+      }
+    } else {
+      if (folderId && folderId !== null) {
+        StonlyReactNative.openKnowledgeBase(teamKnowledgeBaseId, `${folderId}`);
+      } else {
+        StonlyReactNative.openKnowledgeBase(teamKnowledgeBaseId, '');
       }
     }
   },
