@@ -79,6 +79,7 @@ RCT_EXPORT_METHOD(setWindowLevel:(NSNumber*)windowLevel)
 RCT_EXPORT_METHOD(openGuide:(NSString*)guideId stepId:(NSString*)stepId widgetOptions:(NSDictionary*)widgetOptions)
 {
   StonlyWidgetPlacement placement = StonlyWidgetPlacementSheet;
+   placement = StonlyWidgetPlacementFullscreen;
   NSString* placementString = widgetOptions[@"widgetPlacement"];
   if ([placementString isEqualToString:@"SHEET"]) {
     placement = StonlyWidgetPlacementSheet;
@@ -95,18 +96,35 @@ RCT_EXPORT_METHOD(openGuide:(NSString*)guideId stepId:(NSString*)stepId widgetOp
 
   StonlyWidgetOptions* options = StonlyWidgetOptions.new;
   options.placement = placement;
-
-  [StonlyWidget openGuide:guideId stepId:stepId widgetOptions:options window:nil];
+  NSString* stepIdString = @"";
+  if([stepId isEqualToString:@""]) {
+    stepIdString = nil;
+  }else{
+    stepIdString = stepId;
+  }
+  [StonlyWidget openGuide:guideId stepId:stepIdString widgetOptions:options window:nil];
 }
 
 RCT_EXPORT_METHOD(openGuidedTour:(NSString*)guideId stepId:(NSString*)stepId)
 {
-  [StonlyWidget openGuidedTour:guideId stepId:stepId window:nil];
+  NSString* stepIdString = @"";
+  if([stepId isEqualToString:@""]) {
+    stepIdString = nil;
+  }else{
+    stepIdString = stepId;
+  }
+  [StonlyWidget openGuidedTour:guideId stepId:stepIdString window:nil];
 }
 
 RCT_EXPORT_METHOD(openKnowledgeBase:(NSString*)teamKnowledgeBaseId folderId:(NSString*)folderId)
 {
-  [StonlyWidget openKnowledgeBase:teamKnowledgeBaseId folderId:folderId window:nil];
+  NSString* folderIdString = @"";
+  if([folderId isEqualToString:@""]) {
+    folderIdString = nil;
+  }else{
+    folderIdString = folderId;
+  }
+  [StonlyWidget openKnowledgeBase:teamKnowledgeBaseId folderId:folderIdString window:nil];
 }
 
 RCT_EXPORT_METHOD(closeWidget:(NSString*)widgetRuleId)

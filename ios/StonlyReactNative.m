@@ -11,7 +11,59 @@ RCT_EXTERN_METHOD(onScreenChanged:(NSString*)screenName)
 
 RCT_EXPORT_METHOD(openGuidedTour:(NSString*)guideId stepId:(NSString*)stepId)
 {
-  [StonlyWidget openGuidedTour:guideId stepId:stepId window:nil];
+
+  NSString* stepIdString = @"";
+  if([stepId isEqualToString:@""]) {
+    stepIdString = nil;
+  }else{
+    stepIdString = stepId;
+  }
+  [StonlyWidget openGuidedTour:guideId stepId:stepIdString window:nil];
+}
+
+RCT_EXPORT_METHOD(openGuide:(NSString*)guideId stepId:(NSString*)stepId widgetOptions:(NSDictionary*)widgetOptions)
+{
+   StonlyWidgetPlacement placement = StonlyWidgetPlacementSheet;
+   placement = StonlyWidgetPlacementFullscreen;
+  NSString* placementString = widgetOptions[@"widgetPlacement"];
+  if ([placementString isEqualToString:@"SHEET"]) {
+    placement = StonlyWidgetPlacementSheet;
+  }
+  if ([placementString isEqualToString:@"DIALOG"]) {
+    placement = StonlyWidgetPlacementDialog;
+  }
+  if ([placementString isEqualToString:@"POPOVER"]) {
+    placement = StonlyWidgetPlacementPopover;
+  }
+  if ([placementString isEqualToString:@"FULL_SCREEN"]) {
+    placement = StonlyWidgetPlacementFullscreen;
+  }
+
+  StonlyWidgetOptions* options = StonlyWidgetOptions.new;
+  options.placement = placement;
+  NSString* stepIdString = @"";
+  if([stepId isEqualToString:@""]) {
+    stepIdString = nil;
+  }else{
+    stepIdString = stepId;
+  }
+  [StonlyWidget openGuide:guideId stepId:stepIdString widgetOptions:options window:nil];
+}
+
+RCT_EXPORT_METHOD(openKnowledgeBase:(NSString*)teamKnowledgeBaseId folderId:(NSString*)folderId)
+{
+  NSString* folderIdString = @"";
+  if([folderId isEqualToString:@""]) {
+    folderIdString = nil;
+  }else{
+    folderIdString = folderId;
+  }
+  [StonlyWidget openKnowledgeBase:teamKnowledgeBaseId folderId:folderId window:nil];
+}
+
+RCT_EXPORT_METHOD(closeWidget:(NSString*)widgetRuleId)
+{
+  [StonlyWidget closeWidget:widgetRuleId window:nil];
 }
 
 RCT_EXPORT_METHOD(identify:(NSString*)customerId properties:(NSDictionary*)properties)

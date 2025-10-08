@@ -27,14 +27,50 @@ export const WidgetManager = {
   setWindowLevel(windowLevel: number) {
     StonlyReactNative.setWindowLevel(windowLevel);
   },
-  openGuide(guideId: string, stepId = null, widgetOptions = {}) {
-    StonlyReactNative.openGuide(guideId, stepId, widgetOptions);
+  openGuide(guideId: string, stepId:Number | null = null, widgetOptions = {}) {
+    if(Platform.OS === 'android'){
+      if(stepId && stepId !== null){
+        StonlyReactNative.openGuide(guideId, `${stepId}`);
+      } else{
+        StonlyReactNative.openGuide(guideId,null);
+      }
+    }else{ 
+       if(stepId && stepId !== null){
+        StonlyReactNative.openGuide(guideId, `${stepId}`,widgetOptions);
+      } else{
+        StonlyReactNative.openGuide(guideId,"",widgetOptions);
+      }
+    } 
   },
-  openGuidedTour(guideId: string, stepId = null) {
-    StonlyReactNative.openGuidedTour(guideId, stepId);
+  openGuidedTour(guideId: string, stepId:Number | null = null) {
+    if(Platform.OS === 'android'){
+      if(stepId && stepId !== null){
+        StonlyReactNative.openGuidedTour(guideId, `${stepId}`);
+      }else{
+        StonlyReactNative.openGuidedTour(guideId,null);
+      }
+    }else{
+      if(stepId && stepId !== null){
+        StonlyReactNative.openGuidedTour(guideId, `${stepId}`);
+      }else{
+        StonlyReactNative.openGuidedTour(guideId,"");
+      }
+    }
   },
-  openKnowledgeBase(teamKnowledgeBaseId: string, folderId = null) {
-    StonlyReactNative.openKnowledgeBase(teamKnowledgeBaseId, folderId);
+  openKnowledgeBase(teamKnowledgeBaseId: string, folderId:Number | null  = null) {
+    if(Platform.OS === 'android'){
+      if(folderId && folderId !== null){
+        StonlyReactNative.openKnowledgeBase(teamKnowledgeBaseId, `${folderId}`);
+      }else{
+        StonlyReactNative.openKnowledgeBase(teamKnowledgeBaseId,null);
+      }
+    }else{
+      if(folderId && folderId !== null){
+        StonlyReactNative.openKnowledgeBase(teamKnowledgeBaseId, `${folderId}`);
+      }else{
+        StonlyReactNative.openKnowledgeBase(teamKnowledgeBaseId,"");
+      }
+    }
   },
   closeWidget(widgetRuleId: string) {
     StonlyReactNative.closeWidget(widgetRuleId);

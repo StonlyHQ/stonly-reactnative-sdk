@@ -4,7 +4,7 @@ buildscript {
 
     repositories {
         google()
-        mavenCentral() 
+        mavenCentral()  
         maven { url "https://jitpack.io" } 
         flatDir {
             dirs 'libs'
@@ -138,7 +138,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
     implementation "com.facebook.react:react-native:+" 
 
-    implementation 'com.github.StonlyHQ:stonly-android-sdk:v1.0.7'
+    implementation 'com.github.StonlyHQ:stonly-android-sdk:v1.0.13' 
  
 // From node_modules
 }

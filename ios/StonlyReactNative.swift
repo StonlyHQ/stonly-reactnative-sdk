@@ -11,5 +11,5 @@ class StonlyReactNative: NSObject {
     @objc
     func getWidgetId() -> String {
         return Stonly.Widget.widgetId ?? "NOT_DEFINED"
-    }
+    } 
 }

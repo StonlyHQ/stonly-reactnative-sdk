@@ -38,13 +38,13 @@ export const Stonly = {
   setWindowLevel(windowLevel: number) {
     WidgetManager.setWindowLevel(windowLevel);
   },
-  openGuide(guideId: string, stepId = null, widgetOptions = {}) {
+  openGuide(guideId: string, stepId:Number | null = null, widgetOptions = {}) {
     WidgetManager.openGuide(guideId, stepId, widgetOptions);
   },
-  openGuidedTour(guideId: string, stepId = null) {
+  openGuidedTour(guideId: string, stepId:Number | null = null) {
     WidgetManager.openGuidedTour(guideId, stepId);
   },
-  openKnowledgeBase(teamKnowledgeBaseId: string, folderId = null) {
+  openKnowledgeBase(teamKnowledgeBaseId: string, folderId:Number | null  = null) {
     WidgetManager.openKnowledgeBase(teamKnowledgeBaseId, folderId);
   },
   closeWidget(widgetRuleId: string) {
