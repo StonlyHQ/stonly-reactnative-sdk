@@ -81,8 +81,16 @@ RCT_EXPORT_METHOD(setStonlyEnabled:(BOOL)enabled)
   [StonlyWidget setStonlyEnabled:enabled];
 }
 
-RCT_EXPORT_METHOD(setWidgetId:(NSString*)widgetId)
+RCT_EXPORT_METHOD(setSentryEnabled:(BOOL)enabled)
 {
+  // Controls SDK crash reporting to Stonly's Sentry; enabled by default.
+  StonlyWidget.sentryEnabled = enabled;
+}
+
+RCT_EXPORT_METHOD(setWidgetId:(NSString*)widgetId datacenter:(NSString*)datacenter)
+{
+  // Datacenter must be applied before widgetId — setting widgetId boots the SDK.
+  StonlyWidget.datacenter = datacenter ?: @"eu";
   [StonlyWidget setWidgetId:widgetId];
 }
 RCT_EXPORT_SYNCHRONOUS_TYPED_METHOD(NSString *, getWidgetId)

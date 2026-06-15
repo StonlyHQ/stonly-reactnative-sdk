@@ -1,5 +1,11 @@
 import { NativeModules, Platform } from 'react-native';
 
+/**
+ * Stonly datacenter (server region) the SDK connects to.
+ * 'eu' — European datacenter (default), 'us' — American datacenter.
+ */
+export type StonlyDatacenter = 'eu' | 'us';
+
 const LINKING_ERROR =
   `The package 'stonly-react-native' doesn't seem to be linked. Make sure: \n\n` +
   Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
@@ -24,14 +30,17 @@ export const ConfigManager = {
   setMonitoringEnabled(monitoringEnabled: boolean) {
     StonlyReactNative.setMonitoringEnabled(monitoringEnabled);
   },
+  setSentryEnabled(enabled: boolean) {
+    StonlyReactNative.setSentryEnabled(enabled);
+  },
   setSegmentAnonymousId(segmentAnonymousId: string) {
     StonlyReactNative.setSegmentAnonymousId(segmentAnonymousId);
   },
   setWidgetLanguage(languageCode: string) {
     StonlyReactNative.setWidgetLanguage(languageCode);
   },
-  setWidgetId(widgetId: string) {
-    StonlyReactNative.setWidgetId(widgetId);
+  setWidgetId(widgetId: string, datacenter: StonlyDatacenter = 'eu') {
+    StonlyReactNative.setWidgetId(widgetId, datacenter);
   },
   setAuthorizedDomains(domains: string[]) {
     StonlyReactNative.setAuthorizedDomains(domains);

@@ -63,8 +63,9 @@ android {
 }
 
 repositories {
+    mavenLocal()
     mavenCentral()
-    google() 
+    google()
 
     def found = false
     def defaultDir = null
@@ -138,7 +139,10 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
     implementation "com.facebook.react:react-native:+" 
 
-    implementation 'com.github.StonlyHQ:stonly-android-sdk:v1.0.13' 
+    // Local development build with datacenter + Sentry opt-out API.
+    // Before SDK release switch back to: com.github.StonlyHQ:stonly-android-sdk:vX.Y.Z
+    implementation 'com.github.StonlyHQ:stonly-android-sdk:v1.0.23'
+    // implementation 'com.stonly.android:stonly:DEV'
  
 // From node_modules
 }

@@ -1,3 +1,5 @@
+import type { StonlyDatacenter } from './configManager';
+export type { StonlyDatacenter } from './configManager';
 export declare const Stonly: {
     setupNavigation(navigation: any): void;
     setupNativeNavigation(navigationRef: any): void;
@@ -5,6 +7,13 @@ export declare const Stonly: {
     track(eventName: string): void;
     setDebugEnabled(debugEnabled: boolean): void;
     setMonitoringEnabled(monitoringEnabled: boolean): void;
+    /**
+     * Enables or disables SDK crash reporting to Stonly servers (Sentry).
+     * Enabled by default — call with `false` to opt out.
+     * For full silence, call before `setWidgetId`; calling at runtime
+     * closes an already-started reporter.
+     */
+    setSentryEnabled(enabled: boolean): void;
     setSegmentAnonymousId(segmentAnonymousId: string): void;
     setWidgetLanguage(languageCode: string): void;
     sendData(dataObject: object): void;
@@ -16,8 +25,15 @@ export declare const Stonly: {
     closeWidget(widgetRuleId: string): void;
     setStonlyEnabled(enabled: boolean): void;
     getWidgetId(): Promise<string>;
-    setWidgetId(widgetId: string): Promise<void>;
+    /**
+     * Initializes the Stonly SDK with the given widget id.
+     *
+     * @param datacenter Stonly datacenter (server region) the SDK connects to:
+     * 'eu' (European, default) or 'us' (American).
+     */
+    setWidgetId(widgetId: string, datacenter?: StonlyDatacenter): Promise<void>;
     getStoredWidgetId(): Promise<string | null>;
+    getStoredDatacenter(): Promise<StonlyDatacenter | null>;
     setAuthorizedDomains(domains: string[]): void;
 };
 //# sourceMappingURL=index.d.ts.map

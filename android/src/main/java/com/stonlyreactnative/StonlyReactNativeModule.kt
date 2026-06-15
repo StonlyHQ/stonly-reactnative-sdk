@@ -4,6 +4,8 @@ import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.content.Intent
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
@@ -13,6 +15,7 @@ import com.facebook.react.bridge.ReadableArray
 import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.bridge.ReadableType
 import com.stonly.stonly.Stonly
+import com.stonly.stonly.StonlyDatacenter
 import java.lang.Integer.parseInt
 
 class StonlyReactNativeModule(reactContext: ReactApplicationContext) :
@@ -22,7 +25,9 @@ class StonlyReactNativeModule(reactContext: ReactApplicationContext) :
     return reactApplicationContext.baseContext
   }
   fun getActivity(): Activity? {
-    return currentActivity
+    // RN 0.85 removed the inherited currentActivity property from
+    // ReactContextBaseJavaModule; read it from the react context instead.
+    return reactApplicationContext.currentActivity
   }
   override fun getName(): String {
     return NAME
@@ -46,6 +51,11 @@ class StonlyReactNativeModule(reactContext: ReactApplicationContext) :
   }
 
   @ReactMethod
+  fun setSentryEnabled(enabled: Boolean) {
+    Stonly.setSentryEnabled(enabled)
+  }
+
+  @ReactMethod
   fun setSegmentAnonymousId(segmentAnonymousId: String) {
     Stonly.setSegmentAnonymousId(segmentAnonymousId)
   }
@@ -58,8 +68,10 @@ class StonlyReactNativeModule(reactContext: ReactApplicationContext) :
   // WIDGET
 
   @ReactMethod
-  fun sendData(data: Any) {
-    Stonly.sendData(data)
+  fun sendData(data: ReadableMap) {
+    // TurboModule interop cannot parse java.lang.Object parameters, so the
+    // payload arrives as a ReadableMap and is converted before reaching the SDK.
+    Stonly.sendData(readableMapToHashMap(data))
   }
 
   @ReactMethod
@@ -140,11 +152,17 @@ class StonlyReactNativeModule(reactContext: ReactApplicationContext) :
     Stonly.setStonlyEnabled(enabled)
   }
   @ReactMethod
-  fun setWidgetId(key: String) {
-    Stonly.setWidgetId(key, this.reactApplicationContext.applicationContext as Application)
+  fun setWidgetId(key: String, datacenter: String?) {
+    val resolvedDatacenter = StonlyDatacenter.fromValue(datacenter)
+    val application = this.reactApplicationContext.applicationContext as Application
+    // Stonly.setWidgetId tears down trigger views (clearActivity -> removeAllViews),
+    // so it must run on the main thread — @ReactMethod runs on mqt_v_native.
+    Handler(Looper.getMainLooper()).post {
+      Stonly.setWidgetId(key, application, datacenter = resolvedDatacenter)
+    }
     // Save to SharedPreferences for persistence
-    saveWidgetIdToPreferences(key, this.reactApplicationContext)
-    Log.d(NAME, "Widget ID set to: $key")
+    saveWidgetIdToPreferences(key, resolvedDatacenter, this.reactApplicationContext)
+    Log.d(NAME, "Widget ID set to: $key (datacenter: ${resolvedDatacenter.name})")
   }
 
   @ReactMethod
@@ -175,10 +193,17 @@ class StonlyReactNativeModule(reactContext: ReactApplicationContext) :
     }
   }
 
-  private fun saveWidgetIdToPreferences(widgetId: String, context: Context) {
+  private fun saveWidgetIdToPreferences(
+          widgetId: String,
+          datacenter: StonlyDatacenter,
+          context: Context
+  ) {
     try {
       val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-      prefs.edit().putString(WIDGET_ID_KEY, widgetId).apply()
+      prefs.edit()
+              .putString(WIDGET_ID_KEY, widgetId)
+              .putString(DATACENTER_KEY, datacenter.name.lowercase())
+              .apply()
       Log.d(NAME, "Widget ID saved to SharedPreferences: $widgetId")
     } catch (e: Exception) {
       Log.e(NAME, "Failed to save widget ID to SharedPreferences", e)
@@ -242,9 +267,10 @@ class StonlyReactNativeModule(reactContext: ReactApplicationContext) :
     const val NAME = "StonlyReactNative"
     private const val PREFS_NAME = "stonly_prefs"
     private const val WIDGET_ID_KEY = "stonly_widget_id"
+    private const val DATACENTER_KEY = "stonly_datacenter"
 
-    fun setWidgetId(key: String, application: Application) {
-      Stonly.setWidgetId(key, application)
+    fun setWidgetId(key: String, application: Application, datacenter: String? = null) {
+      Stonly.setWidgetId(key, application, datacenter = StonlyDatacenter.fromValue(datacenter))
       Log.d(NAME, "Widget ID set to: $key")
     }
 
@@ -252,8 +278,13 @@ class StonlyReactNativeModule(reactContext: ReactApplicationContext) :
       try {
         val prefs = application.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         val storedWidgetId = prefs.getString(WIDGET_ID_KEY, null)
+        val storedDatacenter = prefs.getString(DATACENTER_KEY, null)
         if (storedWidgetId != null) {
-          Stonly.setWidgetId(storedWidgetId, application)
+          Stonly.setWidgetId(
+                  storedWidgetId,
+                  application,
+                  datacenter = StonlyDatacenter.fromValue(storedDatacenter)
+          )
           Log.d(NAME, "Widget ID restored from SharedPreferences: $storedWidgetId")
           return true
         } else {

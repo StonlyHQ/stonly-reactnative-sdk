@@ -30,6 +30,12 @@ RCT_EXPORT_METHOD(setWidgetId:(NSString *)widgetId)
   StonlyWidget.widgetId = widgetId;
 }
 
+RCT_EXPORT_METHOD(setDatacenter:(NSString *)datacenter)
+{
+  // Must be called before setWidgetId; "eu" (default) or "us".
+  StonlyWidget.datacenter = datacenter;
+}
+
 RCT_EXPORT_METHOD(getWidgetIdAsync:(RCTPromiseResolveBlock)resolve
                  rejecter:(RCTPromiseRejectBlock)reject)
 {
@@ -49,6 +55,12 @@ RCT_EXPORT_METHOD(setDebugEnabled:(BOOL)debugEnabled)
 RCT_EXPORT_METHOD(setMonitoringEnabled:(BOOL)monitoringEnabled)
 {
   StonlyWidget.monitoringEnabled = monitoringEnabled;
+}
+
+RCT_EXPORT_METHOD(setSentryEnabled:(BOOL)sentryEnabled)
+{
+  // Controls SDK crash reporting to Stonly's Sentry; enabled by default.
+  StonlyWidget.sentryEnabled = sentryEnabled;
 }
 
 RCT_EXPORT_METHOD(setSegmentAnonymousId:(NSString *)segmentAnonymousId)
