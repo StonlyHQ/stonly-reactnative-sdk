@@ -141,7 +141,7 @@ dependencies {
 
     // Local development build with datacenter + Sentry opt-out API.
     // Before SDK release switch back to: com.github.StonlyHQ:stonly-android-sdk:vX.Y.Z
-    implementation 'com.github.StonlyHQ:stonly-android-sdk:v1.0.23'
+    implementation 'com.github.StonlyHQ:stonly-android-sdk:v1.0.28'
     // implementation 'com.stonly.android:stonly:DEV'
  
 // From node_modules

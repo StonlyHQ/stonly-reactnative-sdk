@@ -30,9 +30,9 @@ export const WidgetManager = {
   openGuide(guideId: string, stepId: Number | null = null, widgetOptions = {}) {
     if (Platform.OS === 'android') {
       if (stepId && stepId !== null) {
-        StonlyReactNative.openGuide(guideId, `${stepId}`);
+        StonlyReactNative.openGuide(guideId, `${stepId}`, widgetOptions);
       } else {
-        StonlyReactNative.openGuide(guideId, null);
+        StonlyReactNative.openGuide(guideId, null, widgetOptions);
       }
     } else {
       if (stepId && stepId !== null) {

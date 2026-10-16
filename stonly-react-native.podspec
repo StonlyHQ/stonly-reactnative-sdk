@@ -11,12 +11,12 @@ Pod::Spec.new do |s|
   s.license      = package["license"]
   s.authors      = package["author"]
 
-  s.platforms    = { :ios => "11.0" }
+  s.platforms    = { :ios => "14.0" }
   s.source       = { :git => "https://github.com/StonlyHQ/stonly-reactnative-sdk.git", :tag => "#{s.version}" }
 
   s.source_files = "ios/**/*.{h,m,mm,swift}"
 
-  s.dependency "Stonly", ">= 1.0.30"
+  s.dependency "Stonly", ">= 1.0.37"
 
   if respond_to?(:install_modules_dependencies, true)
     # Adds React-Core and, on the new architecture, the required

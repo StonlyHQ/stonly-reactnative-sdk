@@ -102,5 +102,40 @@ RCT_EXPORT_METHOD(setAuthorizedDomains:(NSArray<NSString *>*)domains)
 {
   [StonlyWidget authorizedDomains:domains];
 }
- 
+
+RCT_EXPORT_METHOD(setDebugEnabled:(BOOL)enabled)
+{
+  StonlyWidget.debugEnabled = enabled;
+}
+
+RCT_EXPORT_METHOD(setMonitoringEnabled:(BOOL)enabled)
+{
+  StonlyWidget.monitoringEnabled = enabled;
+}
+
+RCT_EXPORT_METHOD(setSegmentAnonymousId:(NSString*)segmentAnonymousId)
+{
+  [StonlyWidget setSegmentAnonymousId:segmentAnonymousId];
+}
+
+RCT_EXPORT_METHOD(setWidgetLanguage:(NSString*)languageCode)
+{
+  [StonlyWidget setWidgetLanguage:languageCode];
+}
+
+RCT_EXPORT_METHOD(sendData:(NSDictionary*)data)
+{
+  [StonlyWidget sendData:data];
+}
+
+RCT_EXPORT_METHOD(clearSentData)
+{
+  [StonlyWidget clearSentData];
+}
+
+RCT_EXPORT_METHOD(setWindowLevel:(nonnull NSNumber*)windowLevel)
+{
+  [StonlyWidget setWindowLevel:windowLevel.doubleValue];
+}
+
 @end

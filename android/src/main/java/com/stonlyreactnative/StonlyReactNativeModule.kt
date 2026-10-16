@@ -16,6 +16,7 @@ import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.bridge.ReadableType
 import com.stonly.stonly.Stonly
 import com.stonly.stonly.StonlyDatacenter
+import com.stonly.stonly.StonlyWidgetPlacement
 import java.lang.Integer.parseInt
 
 class StonlyReactNativeModule(reactContext: ReactApplicationContext) :
@@ -85,7 +86,7 @@ class StonlyReactNativeModule(reactContext: ReactApplicationContext) :
   }
 
   @ReactMethod
-  fun openGuide(guideId: String, stepId: String?) {
+  fun openGuide(guideId: String, stepId: String?, widgetOptions: ReadableMap?) {
     Log.d(NAME, "open Guide with {$guideId} {$stepId}")
     var _stepId: Int? = null
     if (stepId != null) {
@@ -95,8 +96,23 @@ class StonlyReactNativeModule(reactContext: ReactApplicationContext) :
         Log.w(NAME, "stepId need to be a number or null")
       }
     }
+    // Same keys as the iOS bridge: widgetOptions.widgetPlacement = SHEET|DIALOG|POPOVER|FULL_SCREEN
+    val placement =
+            when (widgetOptions?.takeIf { it.hasKey("widgetPlacement") }?.getString("widgetPlacement")) {
+              "SHEET" -> StonlyWidgetPlacement.SHEET
+              "DIALOG" -> StonlyWidgetPlacement.DIALOG
+              "POPOVER" -> StonlyWidgetPlacement.POPOVER
+              "FULL_SCREEN" -> StonlyWidgetPlacement.FULL_SCREEN
+              else -> null
+            }
     getActivity()?.let { activity ->
-      activity.runOnUiThread { Stonly.openGuide(guideId, _stepId, activity) }
+      activity.runOnUiThread {
+        if (placement != null) {
+          Stonly.openGuide(guideId, _stepId, placement, activity)
+        } else {
+          Stonly.openGuide(guideId, _stepId, activity)
+        }
+      }
     }
   }
 
