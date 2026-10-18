@@ -23,10 +23,14 @@ export const NavigationManager = {
       StonlyReactNative.onScreenChanged(event.componentName);
     });
   },
+  /**
+   * Reports each react-navigation screen change to the native SDK as the
+   * route name without a leading slash (e.g. `DemoShowroom`), matching what
+   * iOS strips natively and what CMS page rules contain.
+   */
   setupNavigation(navigationRef: any) {
-    // react-navigation
     navigationRef.addListener('state', (_: any) => {
-      let routeName = '/' + navigationRef.getCurrentRoute().name;
+      const routeName = navigationRef.getCurrentRoute().name.replace(/^\//, '');
       StonlyReactNative.onScreenChanged(routeName);
     });
   },

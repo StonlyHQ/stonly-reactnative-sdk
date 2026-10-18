@@ -150,3 +150,34 @@ StonlyWidget.widgetId = @"your-widget-id";
 
 After configuration, you can use the Stonly widget in your JavaScript code
  
+
+## Debug logging
+
+```ts
+import { Stonly } from 'stonly-react-native';
+
+Stonly.setDebugEnabled(__DEV__);
+```
+
+Android (native SDK >= 1.0.28): the SDK logs trigger resolution per screen (which triggers were received, which matched and why the others did not), widget open/reveal/close traces and the route sent to the trigger engine. Filter with:
+
+```bash
+adb logcat -s Stonly:* Stonly.Triggers:* TriggerManager:* XmlParsingStrategy:*
+```
+
+iOS: enables the native SDK debug log (`StonlyWidget.debugEnabled`). The per-screen trigger report is Android-only for now.
+
+Disable in production builds.
+
+## Element triggers (hotspot, tooltip, tappable element)
+
+Give every view you want to target a stable `testID`:
+
+```tsx
+<View testID="checkout-summary">…</View>
+```
+
+On iOS `testID` becomes `accessibilityIdentifier`, and the Stonly wizard then offers an
+`accessibility-identifier` selector. Without it the wizard falls back to the React view
+`tag`, which is assigned at runtime and changes on every launch, so the trigger stops
+matching after the app restarts. Class paths are relative and rarely unique.
