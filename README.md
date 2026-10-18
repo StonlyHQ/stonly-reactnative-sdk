@@ -168,3 +168,16 @@ adb logcat -s Stonly:* Stonly.Triggers:* TriggerManager:* XmlParsingStrategy:*
 iOS: enables the native SDK debug log (`StonlyWidget.debugEnabled`). The per-screen trigger report is Android-only for now.
 
 Disable in production builds.
+
+## Element triggers (hotspot, tooltip, tappable element)
+
+Give every view you want to target a stable `testID`:
+
+```tsx
+<View testID="checkout-summary">…</View>
+```
+
+On iOS `testID` becomes `accessibilityIdentifier`, and the Stonly wizard then offers an
+`accessibility-identifier` selector. Without it the wizard falls back to the React view
+`tag`, which is assigned at runtime and changes on every launch, so the trigger stops
+matching after the app restarts. Class paths are relative and rarely unique.
