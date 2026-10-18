@@ -13,7 +13,7 @@ import { NavigationManager } from '../navigationManager';
 const mockOnScreenChanged = NativeModules.StonlyReactNative
   .onScreenChanged as jest.Mock;
 
-const makeNavigationRef = (name: string) => {
+const makeNavigationRef = (name?: string) => {
   const listeners: Record<string, (event: unknown) => void> = {};
   return {
     listeners,
@@ -21,7 +21,7 @@ const makeNavigationRef = (name: string) => {
       addListener: (event: string, cb: (e: unknown) => void) => {
         listeners[event] = cb;
       },
-      getCurrentRoute: () => ({ name }),
+      getCurrentRoute: () => (name === undefined ? undefined : { name }),
     },
   };
 };
@@ -43,6 +43,27 @@ describe('NavigationManager.setupNavigation', () => {
     NavigationManager.setupNavigation(ref);
     listeners.state?.({});
     expect(mockOnScreenChanged).toHaveBeenCalledWith('Home/Details');
+  });
+
+  it('strips a single slash only, so "//Home" becomes "/Home"', () => {
+    const { ref, listeners } = makeNavigationRef('//Home');
+    NavigationManager.setupNavigation(ref);
+    listeners.state?.({});
+    expect(mockOnScreenChanged).toHaveBeenCalledWith('/Home');
+  });
+
+  it('ignores state changes without a current route', () => {
+    const { ref, listeners } = makeNavigationRef(undefined);
+    NavigationManager.setupNavigation(ref);
+    listeners.state?.({});
+    expect(mockOnScreenChanged).not.toHaveBeenCalled();
+  });
+
+  it('ignores a route whose name is empty', () => {
+    const { ref, listeners } = makeNavigationRef('');
+    NavigationManager.setupNavigation(ref);
+    listeners.state?.({});
+    expect(mockOnScreenChanged).not.toHaveBeenCalled();
   });
 });
 

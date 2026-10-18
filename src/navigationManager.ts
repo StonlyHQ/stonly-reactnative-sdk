@@ -30,8 +30,11 @@ export const NavigationManager = {
    */
   setupNavigation(navigationRef: any) {
     navigationRef.addListener('state', (_: any) => {
-      const routeName = navigationRef.getCurrentRoute().name.replace(/^\//, '');
-      StonlyReactNative.onScreenChanged(routeName);
+      const name = navigationRef.getCurrentRoute()?.name;
+      if (!name) {
+        return;
+      }
+      StonlyReactNative.onScreenChanged(name.replace(/^\//, ''));
     });
   },
 };
