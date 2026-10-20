@@ -92,6 +92,8 @@ RCT_EXPORT_METHOD(setWidgetId:(NSString*)widgetId datacenter:(NSString*)datacent
   // Datacenter must be applied before widgetId — setting widgetId boots the SDK.
   StonlyWidget.datacenter = datacenter ?: @"eu";
   [StonlyWidget setWidgetId:widgetId];
+  // Read back by the Expo plugin's AppDelegate on the next launch (parity with Android SharedPreferences).
+  [[NSUserDefaults standardUserDefaults] setObject:widgetId forKey:@"stonly_widget_id"];
 }
 RCT_EXPORT_SYNCHRONOUS_TYPED_METHOD(NSString *, getWidgetId)
 {
