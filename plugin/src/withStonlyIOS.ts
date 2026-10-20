@@ -37,8 +37,10 @@ function addStonlyToSwiftAppDelegate(
     }
   }
 
-  // Add widgetId configuration in application(_:didFinishLaunchingWithOptions:)
-  const widgetIdLine = `    Stonly.Widget.widgetId = "${widgetId}"`;
+  // Add widgetId configuration in application(_:didFinishLaunchingWithOptions:).
+  // The widgetId last set from JS wins, so a cold start opened by a pairing link
+  // boots the SDK for the same team the app was using.
+  const widgetIdLine = `    Stonly.Widget.widgetId = UserDefaults.standard.string(forKey: "stonly_widget_id") ?? "${widgetId}"`;
   if (!contents.includes('Stonly.Widget.widgetId')) {
     // Find the didFinishLaunchingWithOptions method and add configuration before return statement
     const didFinishRegex =

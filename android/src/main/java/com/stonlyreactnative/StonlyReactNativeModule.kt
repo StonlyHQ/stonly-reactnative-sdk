@@ -7,6 +7,7 @@ import android.content.Intent
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import com.facebook.react.bridge.BaseActivityEventListener
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
@@ -21,6 +22,16 @@ import java.lang.Integer.parseInt
 
 class StonlyReactNativeModule(reactContext: ReactApplicationContext) :
         ReactContextBaseJavaModule(reactContext) {
+
+  init {
+    // Warm start: Activity.onNewIntent does not replace getIntent(), which the Expo
+    // plugin's MainActivity.onResume passes to register(). Swap it so the new link wins.
+    reactContext.addActivityEventListener(object : BaseActivityEventListener() {
+      override fun onNewIntent(intent: Intent) {
+        reactApplicationContext.currentActivity?.intent = intent
+      }
+    })
+  }
 
   fun getContext(): Context? {
     return reactApplicationContext.baseContext
@@ -314,7 +325,16 @@ class StonlyReactNativeModule(reactContext: ReactApplicationContext) :
       }
     }
 
+    private var lastRegisteredLink: String? = null
+
+    /**
+     * Forwards a Stonly pairing link (`stonly-<appId>://wizard|register?token=…`) to the SDK.
+     * Called on every resume; the same link is forwarded only once.
+     */
     fun register(intent: Intent) {
+      val link = intent.data?.toString() ?: return
+      if (!link.startsWith("stonly-") || link == lastRegisteredLink) return
+      lastRegisteredLink = link
       Stonly.register(intent)
     }
   }
