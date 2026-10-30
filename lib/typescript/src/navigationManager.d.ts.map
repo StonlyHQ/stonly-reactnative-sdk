@@ -1,1 +1,1 @@
-{"version":3,"file":"navigationManager.d.ts","sourceRoot":"","sources":["../../../src/navigationManager.ts"],"names":[],"mappings":"AAkBA,eAAO,MAAM,iBAAiB;sCACM,GAAG;mCAMN,GAAG;CAOnC,CAAC"}
+{"version":3,"file":"navigationManager.d.ts","sourceRoot":"","sources":["../../../src/navigationManager.ts"],"names":[],"mappings":"AAkBA,eAAO,MAAM,iBAAiB;sCACM,GAAG;IAMrC;;;;OAIG;mCAC4B,GAAG;CASnC,CAAC"}
