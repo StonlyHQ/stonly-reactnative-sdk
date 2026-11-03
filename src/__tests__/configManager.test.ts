@@ -3,6 +3,7 @@ jest.mock('react-native', () => ({
     StonlyReactNative: {
       setWidgetId: jest.fn(),
       setSentryEnabled: jest.fn(),
+      setDebugEnabled: jest.fn(),
     },
   },
   Platform: { OS: 'ios', select: jest.fn() },
@@ -15,6 +16,8 @@ const mockSetWidgetId = NativeModules.StonlyReactNative
   .setWidgetId as jest.Mock;
 const mockSetSentryEnabled = NativeModules.StonlyReactNative
   .setSentryEnabled as jest.Mock;
+const mockSetDebugEnabled = NativeModules.StonlyReactNative
+  .setDebugEnabled as jest.Mock;
 
 describe('ConfigManager.setWidgetId', () => {
   beforeEach(() => {
@@ -50,5 +53,21 @@ describe('ConfigManager.setSentryEnabled', () => {
   it('passes true to the native module (re-enable)', () => {
     ConfigManager.setSentryEnabled(true);
     expect(mockSetSentryEnabled).toHaveBeenCalledWith(true);
+  });
+});
+
+describe('ConfigManager.setDebugEnabled', () => {
+  beforeEach(() => {
+    mockSetDebugEnabled.mockClear();
+  });
+
+  it('passes true to the native module', () => {
+    ConfigManager.setDebugEnabled(true);
+    expect(mockSetDebugEnabled).toHaveBeenCalledWith(true);
+  });
+
+  it('passes false to the native module', () => {
+    ConfigManager.setDebugEnabled(false);
+    expect(mockSetDebugEnabled).toHaveBeenCalledWith(false);
   });
 });
