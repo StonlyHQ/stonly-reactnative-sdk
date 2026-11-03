@@ -20,6 +20,12 @@ export const Stonly = {
   track(eventName: string) {
     TrackerManager.track(eventName);
   },
+  /**
+   * Enables the native SDK debug log on iOS and Android.
+   * Pass `__DEV__` so release builds stay quiet.
+   *
+   * @param debugEnabled `true` to log SDK diagnostics, `false` to disable.
+   */
   setDebugEnabled(debugEnabled: boolean) {
     ConfigManager.setDebugEnabled(debugEnabled);
   },
