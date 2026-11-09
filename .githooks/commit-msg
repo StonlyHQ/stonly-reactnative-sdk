@@ -1,0 +1,11 @@
+#!/bin/sh
+# Rejects commit headers outside `type(scope): [STON-1234] message`.
+# Version bumps use `chore(release): message`. Merge, revert, fixup and squash commits pass.
+# Install in a repo: copy to .githooks/commit-msg, then `git config core.hooksPath .githooks`.
+
+header=$(head -n1 "$1")
+case "$header" in Merge* | Revert* | fixup!* | squash!*) exit 0 ;; esac
+printf '%s\n' "$header" | grep -Eq '^[a-z]+\([^)]+\): \[STON-[0-9]+\] .+|^chore\(release\): .+' && exit 0
+echo "commit-msg: header must be 'type(scope): [STON-1234] message' or 'chore(release): message'" >&2
+echo "got: $header" >&2
+exit 1

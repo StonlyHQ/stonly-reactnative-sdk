@@ -60,7 +60,7 @@ To edit the Java or Kotlin files, open `example/android` in Android studio and f
 
 ### Commit message convention
 
-We follow the [conventional commits specification](https://www.conventionalcommits.org/en) for our commit messages:
+We follow the [conventional commits specification](https://www.conventionalcommits.org/en) with a scope and a Jira ticket: `type(scope): [STON-1234] message`. Version bumps use `chore(release): message`. Types:
 
 - `fix`: bug fixes, e.g. fix crash due to deprecated method.
 - `feat`: new features, e.g. add new method to the module.
