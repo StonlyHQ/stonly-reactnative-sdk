@@ -5,6 +5,12 @@ export declare const Stonly: {
     setupNativeNavigation(navigationRef: any): void;
     identify(customerId: string, properties?: {}): void;
     track(eventName: string): void;
+    /**
+     * Enables the native SDK debug log on iOS and Android.
+     * Pass `__DEV__` so release builds stay quiet.
+     *
+     * @param debugEnabled `true` to log SDK diagnostics, `false` to disable.
+     */
     setDebugEnabled(debugEnabled: boolean): void;
     setMonitoringEnabled(monitoringEnabled: boolean): void;
     /**

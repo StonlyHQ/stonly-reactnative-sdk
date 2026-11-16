@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.10
+
+### Other Changes
+- chore: bump native SDKs to Android v1.0.29, iOS v1.0.38
+- test(sdk): cover setDebugEnabled forwarding to the native module
+
 ## 1.0.9
 
 - Fix (Android): wizard pairing link opened while the app is running (warm start) is now used; previously the stale launch intent was re-registered on every resume.
