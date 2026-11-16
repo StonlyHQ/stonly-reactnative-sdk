@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
 
   s.source_files = "ios/**/*.{h,m,mm,swift}"
 
-  s.dependency "Stonly", ">= 1.0.37"
+  s.dependency "Stonly", ">= 1.0.38"
 
   if respond_to?(:install_modules_dependencies, true)
     # Adds React-Core and, on the new architecture, the required
